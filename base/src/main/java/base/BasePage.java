@@ -18,18 +18,19 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utils.Database;
 import utils.ExcelData;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.List;
 import java.util.function.Function;
 
 public class BasePage {
@@ -45,6 +46,8 @@ public class BasePage {
     public static Wait<WebDriver> fluentWait;
     public static ExtentReports extent;
     public static JavascriptExecutor jsDriver;
+
+    private static Robot robot;
 
     public BasePage() {
         dataInit();
@@ -232,6 +235,11 @@ public class BasePage {
         driver.switchTo().frame(frame);
     }
 
+    public void switchToIFrame(WebElement frame) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(frame));
+        driver.switchTo().frame(frame);
+    }
+
     public void switchToTab() {
         String parentHandle = driver.getWindowHandle();
 
@@ -265,6 +273,11 @@ public class BasePage {
         jsDriver.executeScript("arguments[0].click();", element);
     }
 
+    public void jsScrollUntilElementIsVisible(WebElement element) {
+        jsDriver = (JavascriptExecutor) (driver);
+        jsDriver.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
     public void safeClickOnElement(WebElement element) {
         try {
             clickOnElement(element);
@@ -282,6 +295,16 @@ public class BasePage {
         jsDriver.executeScript("arguments[0].setAttribute('" + attribute + "', '" + value + "')", driver.findElement(by));
 
         return driver.findElement(by);
+    }
+
+    public void pressEnterKey() {
+        try {
+            robot = new Robot();
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
     }
 
     // endregion
@@ -350,5 +373,12 @@ public class BasePage {
         return calendar.getTime();
     }
     // endregion
+
+    public boolean areEqualLists (List<WebElement> elements, List<Object> data) {
+        if (elements.equals(data)) {
+            return true;
+        }
+        return false;
+    }
 
 }
