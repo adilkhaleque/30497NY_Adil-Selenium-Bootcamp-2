@@ -9,4 +9,10 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://parabank.parasoft.com"/>
 
+    <test name="smoke">
+        <classes>
+            <class name="system.authentication.TestAuthentication"/>
+        </classes>
+    </test>
+
 </suite>
