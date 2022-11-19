@@ -11,7 +11,15 @@
 
     <test name="smoke">
         <classes>
-            <class name="system.authentication.TestAuthentication"/>
+<!--            <class name="system.authentication.TestAuthentication"/>-->
+<!--            <class name="system.open_new_account.TestOpenNewAccount"/>-->
+<!--            <class name="system.account_details.TestViewAccountDetails"/>-->
+<!--            <class name="system.transfer_funds.TestTransferFunds"/>-->
+<!--            <class name="system.transfer_funds.TestTransferFunds"/>-->
+<!--            <class name="system.bill_payment.TestPayBill"/>-->
+<!--            <class name="system.find_transactions.TestFindTransactionsByDate"/>-->
+<!--            <class name="system.update_profile.TestUpdateProfile"/>-->
+<!--            <class name="system.apply_for_loan.TestApplyForLoan"/>-->
         </classes>
     </test>
 
