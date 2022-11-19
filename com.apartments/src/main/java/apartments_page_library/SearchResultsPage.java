@@ -4,6 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -117,12 +118,14 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//*[@id='searchResultSortMenu']/ul/li[3]")
     public WebElement rentSortOption;
 
-    @FindBy(xpath = "//*[@id='placardContainer']/ul/li[5]/article/section/div/div[2]/div/div/a")
+    @FindBy(xpath = "//div[@class='property-information']/a[@aria-label='THE BELLSLIP, Brooklyn, NY']")
     public WebElement reviewProperty;
 
     @FindBy(xpath = "//div[@id='placardContainer']/ul/li[1]/article/header/div[1]/a")
     public WebElement rentalProperty;
 
+    @FindBy(xpath = "//section[@id='map']/div[2]/div[6]/div[2]/i")
+    public WebElement zoomOutButton;
 
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
@@ -188,6 +191,10 @@ public class SearchResultsPage extends BasePage {
         safeClickOnElement(rentSortOption);
     }
 
+    public void clickOnZoomOut() {
+        safeClickOnElement(zoomOutButton);
+    }
+
     public PropertyPage clickOnRentalProperty() {
         safeClickOnElement(rentalProperty);
 
@@ -197,6 +204,8 @@ public class SearchResultsPage extends BasePage {
     public PropertyPage clickOnProperty() {
         clickOnSortButton();
         clickOnRentSortOption();
+        clickOnZoomOut();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(reviewProperty));
         jsScrollUntilElementIsVisible(reviewProperty);
         safeClickOnElement(reviewProperty);
 
