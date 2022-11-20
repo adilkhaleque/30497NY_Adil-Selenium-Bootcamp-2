@@ -291,7 +291,6 @@ public class SearchResultsPage extends SharedStepsUI {
     public void chooseSmartphone() {
         webDriverWait.until(ExpectedConditions.visibilityOf(helpMeChooseButton));
         clickOnHelpMeChoose();
-        webDriverWait.until(ExpectedConditions.visibilityOf(newCustomerOption));
         clickOnNewCustomer();
         clickOnNext();
         clickOnOneLine();
@@ -302,11 +301,11 @@ public class SearchResultsPage extends SharedStepsUI {
         clickOnNext();
         clickOnBrowsingAndShopping();
         clickOnSocialMedia();
-        clickOnStreamingMusicOrPodcasts();
-        clickOnWatchingTvOrMovies();
-        clickOnStreamingSports();
-        clickOnMapsAndGps();
-        clickOnOrganizingMyLife();
+//        clickOnStreamingMusicOrPodcasts();
+//        clickOnWatchingTvOrMovies();
+//        clickOnStreamingSports();
+//        clickOnMapsAndGps();
+//        clickOnOrganizingMyLife();
         jsScrollUntilElementIsVisible(nextButton);
         clickOnNext();
         clickOnCameraQualityEssential();
@@ -330,9 +329,9 @@ public class SearchResultsPage extends SharedStepsUI {
         clickOnNext();
         clickOnHdStreaming();
         clickOnNext();
-        clickOnNoBenefits();
+        //clickOnNoBenefits();
         clickOnNext();
-        clickOnNext();
+        //clickOnNext();
         webDriverWait.until(ExpectedConditions.visibilityOf(phoneOfChoiceText));
     }
 
