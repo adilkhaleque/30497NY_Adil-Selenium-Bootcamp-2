@@ -21,7 +21,7 @@ public class SearchResultsPage extends SharedStepsUI {
     public WebElement startAgainConfirmation;
 
     //wait until visible and then click
-    @FindBy(xpath = "//button[@aria-label='Help me choose']")
+    @FindBy(id = "_15gifts-launcher-button")
     public WebElement helpMeChooseButton;
 
     //wait until visible then click
@@ -34,7 +34,7 @@ public class SearchResultsPage extends SharedStepsUI {
     @FindBy(id = "single_line_label")
     public WebElement oneLineOption;
 
-    @FindBy(xpath = "//*[@id='no_help_me_choose-2']")
+    @FindBy(id = "no_help_me_choose-2")
     public WebElement helpMeDecidePhone;
 
     @FindBy(id = "no_help_me_choose_label")
@@ -55,25 +55,25 @@ public class SearchResultsPage extends SharedStepsUI {
 //    public List<WebElement> phoneUsagesCheckboxes;
     //scroll down after and click next
 
-    @FindBy(id = "shopping-0")
+    @FindBy(id = "shopping_label")
     public WebElement browsingAndShopping;
 
-    @FindBy(id = "social_media-1")
+    @FindBy(id = "social_media_label")
     public WebElement socialMedia;
 
-    @FindBy(id = "listen_to_music-2")
+    @FindBy(id = "listen_to_music_label")
     public WebElement musicOrPodcasts;
 
-    @FindBy(id = "watch_tv_and_films-3")
+    @FindBy(id = "watch_tv_and_films_label")
     public WebElement tvAndMovies;
 
-    @FindBy(id = "streaming_sports-4")
+    @FindBy(id = "streaming_sports_label")
     public WebElement streamSports;
 
-    @FindBy(id = "maps_and_gps-6")
+    @FindBy(id = "maps_and_gps_label")
     public WebElement mapsAndGps;
 
-    @FindBy(id = "organising_my_life-8")
+    @FindBy(id = "organising_my_life_label")
     public WebElement organizingMyLife;
 
 //    @FindBy(xpath = "//button[@aria-valuetext=\"Camera quality, Don't mind\"]")
@@ -116,10 +116,10 @@ public class SearchResultsPage extends SharedStepsUI {
 //    public List<WebElement> brandsCheckboxes;
     //scroll down to next button and click next
 
-    @FindBy(id = "apple-1")
+    @FindBy(id = "apple_label")
     public WebElement appleCheckbox;
 
-    @FindBy(id = "samsung-2")
+    @FindBy(id = "samsung_label")
     public WebElement samsungCheckbox;
 
     @FindBy(id = "google_label")
@@ -133,7 +133,7 @@ public class SearchResultsPage extends SharedStepsUI {
     public WebElement dontMind5gOption;
     //click next
 
-    @FindBy(id = "none_of_these-7")
+    @FindBy(id = "none_of_these_label")
     public WebElement noPerksOption;
     //click next
 
@@ -141,7 +141,7 @@ public class SearchResultsPage extends SharedStepsUI {
     public WebElement hdStreamingOption;
     //click next
 
-    @FindBy(id = "none_of_these-2")
+    @FindBy(id = "none_of_these_label")
     public WebElement noBenefitsOption;
     //click next
 
@@ -301,11 +301,11 @@ public class SearchResultsPage extends SharedStepsUI {
         clickOnNext();
         clickOnBrowsingAndShopping();
         clickOnSocialMedia();
-//        clickOnStreamingMusicOrPodcasts();
-//        clickOnWatchingTvOrMovies();
-//        clickOnStreamingSports();
-//        clickOnMapsAndGps();
-//        clickOnOrganizingMyLife();
+        clickOnStreamingMusicOrPodcasts();
+        clickOnWatchingTvOrMovies();
+        clickOnStreamingSports();
+        clickOnMapsAndGps();
+        clickOnOrganizingMyLife();
         jsScrollUntilElementIsVisible(nextButton);
         clickOnNext();
         clickOnCameraQualityEssential();
@@ -329,9 +329,9 @@ public class SearchResultsPage extends SharedStepsUI {
         clickOnNext();
         clickOnHdStreaming();
         clickOnNext();
-        //clickOnNoBenefits();
+        clickOnNoBenefits();
         clickOnNext();
-        //clickOnNext();
+        clickOnNext();
         webDriverWait.until(ExpectedConditions.visibilityOf(phoneOfChoiceText));
     }
 
