@@ -9,4 +9,9 @@ public class DataProviders extends BasePage {
     public Object[][] getFilterText() {
         return excel.readStringArrays("Google5GPhones");
     }
+
+    @DataProvider(name = "testPhoneOfChoice")
+    public Object[][] getPhoneText() {
+        return excel.readStringArrays("PhoneOfChoice");
+    }
 }

@@ -4,6 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import verizon_page_library.SearchResultsPage;
 import verizon_page_library.ShopPage;
 
 public class SystemBar extends BasePage {
@@ -25,6 +26,9 @@ public class SystemBar extends BasePage {
 
     @FindBy(xpath = "//a[@id='gnav20-Shop-L3-2']")
     public WebElement fiveGeePhones;
+
+    @FindBy(xpath = "//a[@id='gnav20-Shop-L3-1']")
+    public WebElement smartphones;
 
     public SystemBar() {
         PageFactory.initElements(driver, this);
@@ -52,12 +56,26 @@ public class SystemBar extends BasePage {
         return new ShopPage();
     }
 
+    public SearchResultsPage clickOnSmartPhones() {
+        safeClickOnElement(smartphones);
+
+        return new SearchResultsPage();
+    }
+
     public ShopPage navigateTo5gPhones() {
         clickOnShopButton();
         clickOnDevicesButton();
         clickOn5gPhonesButton();
 
         return new ShopPage();
+    }
+
+    public SearchResultsPage navigateToSmartphonesResults() {
+        clickOnShopButton();
+        clickOnDevicesButton();
+        clickOnSmartPhones();
+
+        return clickOnSmartPhones();
     }
 
 }

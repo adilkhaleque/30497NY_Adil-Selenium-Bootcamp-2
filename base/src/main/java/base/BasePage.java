@@ -307,6 +307,15 @@ public class BasePage {
         }
     }
 
+    public void moveSlider(WebElement initialPos, WebElement endPos) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(initialPos)
+                .click()
+                .dragAndDrop(initialPos, endPos)
+                .build()
+                .perform();
+    }
+
     // endregion
 
     // endregion
@@ -324,7 +333,7 @@ public class BasePage {
             driver = new SafariDriver();
         }
 
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofMillis(500))
