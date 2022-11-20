@@ -30,6 +30,9 @@ public class SystemBar extends BasePage {
     @FindBy(xpath = "//a[@id='gnav20-Shop-L3-1']")
     public WebElement smartphones;
 
+    @FindBy(xpath = "//a[@aria-label='Smartwatches']")
+    public WebElement searchSuggestion;
+
     public SystemBar() {
         PageFactory.initElements(driver, this);
     }
@@ -58,6 +61,24 @@ public class SystemBar extends BasePage {
 
     public SearchResultsPage clickOnSmartPhones() {
         safeClickOnElement(smartphones);
+
+        return new SearchResultsPage();
+    }
+
+    public void inputSearch(String searchTerm) {
+        sendKeysToElement(searchBar, searchTerm);
+    }
+
+    public SearchResultsPage clickOnSearchSuggestion() {
+        safeClickOnElement(searchSuggestion);
+
+        return new SearchResultsPage();
+    }
+
+    public SearchResultsPage doSearch(String searchTerm) {
+        clickOnSearchButton();
+        inputSearch(searchTerm);
+        clickOnSearchSuggestion();
 
         return new SearchResultsPage();
     }

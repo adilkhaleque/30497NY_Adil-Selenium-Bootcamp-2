@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import shared.SharedStepsUI;
 
+import java.util.List;
+
 public class SearchResultsPage extends SharedStepsUI {
 
     @FindBy(xpath = "//div[@id='filters']//div[@id='renderSelectedFilters']//p/span")
@@ -154,6 +156,24 @@ public class SearchResultsPage extends SharedStepsUI {
     @FindBy(xpath = "//span[@class='css-1ol8tse' and text() = 'Apple iPhone 14 Pro Max']")
     public WebElement phoneOfChoiceText;
 
+    @FindBy(xpath = "//div[@id='content-filters']/ul/li[2]/button")
+    public WebElement brandDropdown;
+
+    @FindBy(xpath = "//*[@id='product.manufacturer.name_s']/div/li/span/label")
+    public List<WebElement> brands;
+
+    @FindBy(xpath = "//div[@id='content-filters']/ul/li[3]/button")
+    public WebElement colorDropdown;
+
+    @FindBy(xpath = "//*[@id='sku.color_description_s']/div/li/span/label")
+    public List<WebElement> colors;
+
+    @FindBy(xpath = "//div[@id='content-filters']/div/button[2]")
+    public WebElement filterButton;
+
+    @FindBy(xpath = "//div[@id='layout_container']//div[@class='newGridTileStyled__InnerDiv-bsQFXG eybXYa']//h2/a[@href]")
+    public List<WebElement> watches;
+
 
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
@@ -286,6 +306,44 @@ public class SearchResultsPage extends SharedStepsUI {
 
     public String getPhoneOfChoiceText() {
         return getTrimmedElementText(phoneOfChoiceText);
+    }
+
+    public void clickOnBrandDropdown() {
+        safeClickOnElement(brandDropdown);
+    }
+
+    public void selectSpecificBrand(int itemIndex) {
+        try {
+            clickOnElement(brands.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(brands.get(brands.size() - 1));
+        }
+    }
+
+    public void clickOnFilterButton() {
+        safeClickOnElement(filterButton);
+    }
+
+    public void clickOnColorDropdown() {
+        safeClickOnElement(colorDropdown);
+    }
+
+    public void selectSpecificColor(int itemIndex) {
+        try {
+            clickOnElement(colors.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(colors.get(colors.size() - 1));
+        }
+    }
+
+    public ItemPage selectProduct(int itemIndex) {
+        try {
+            clickOnElement(watches.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(watches.get(watches.size() - 1));
+        }
+
+        return new ItemPage();
     }
 
     public void chooseSmartphone() {

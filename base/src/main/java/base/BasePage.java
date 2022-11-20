@@ -391,4 +391,12 @@ public class BasePage {
         return false;
     }
 
+    public void selectItem(int itemIndex, List<WebElement> elements) {
+        try {
+            clickOnElement(elements.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(elements.get(elements.size() - 1));
+        }
+    }
+
 }

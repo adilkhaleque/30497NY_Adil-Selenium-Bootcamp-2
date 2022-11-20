@@ -14,4 +14,9 @@ public class DataProviders extends BasePage {
     public Object[][] getPhoneText() {
         return excel.readStringArrays("PhoneOfChoice");
     }
+
+    @DataProvider(name = "testAddingToCart")
+    public Object[][] getItemDetails() {
+        return excel.readStringArrays("Smartwatches");
+    }
 }
