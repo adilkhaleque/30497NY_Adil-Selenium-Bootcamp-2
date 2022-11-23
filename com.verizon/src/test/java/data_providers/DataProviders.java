@@ -6,8 +6,13 @@ import org.testng.annotations.DataProvider;
 public class DataProviders extends BasePage {
 
     @DataProvider(name = "testGoogle5GPhones")
-    public Object[][] getFilterText() {
+    public Object[][] getGoogleFilterText1() {
         return excel.readStringArrays("Google5GPhones");
+    }
+
+    @DataProvider(name = "testSamsung5GPhones")
+    public Object[][] getSamsungFilterText() {
+        return excel.readStringArrays("Samsung5GPhones");
     }
 
     @DataProvider(name = "testPhoneOfChoice")

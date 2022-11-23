@@ -18,4 +18,14 @@ public class TestView5gPhones extends BasePage {
 
         Assert.assertEquals(searchResultsPage.getGoogleFilterText(), expectedText);
     }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testSamsung5GPhones")
+    public void testViewSamsung5gPhones(String expectedText) {
+
+        HomePage homePage = new HomePage();
+        ShopPage shopPage = homePage.systemBar.navigateTo5gPhones();
+        SearchResultsPage searchResultsPage = shopPage.clickOnSamsungPhoneButton();
+
+        Assert.assertEquals(searchResultsPage.getSamsungFilterText(), expectedText);
+    }
 }

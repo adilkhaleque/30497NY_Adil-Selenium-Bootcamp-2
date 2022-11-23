@@ -13,6 +13,9 @@ public class SearchResultsPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@id='filters']//div[@id='renderSelectedFilters']//p/span")
     public WebElement googleFilterText;
 
+    @FindBy(xpath = "//div[@id='filters']//div[@id='renderSelectedFilters']//p/span")
+    public WebElement samsungFilterText;
+
     @FindBy(xpath = "//button[@aria-label='My recommendation']")
     public WebElement myRecommendationButton;
 
@@ -181,6 +184,10 @@ public class SearchResultsPage extends SharedStepsUI {
 
     public String getGoogleFilterText() {
         return getTrimmedElementText(googleFilterText);
+    }
+
+    public String getSamsungFilterText() {
+        return getTrimmedElementText(samsungFilterText);
     }
 
     public void clickOnMyRecommendationButton() {
