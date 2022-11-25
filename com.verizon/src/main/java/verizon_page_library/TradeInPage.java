@@ -17,7 +17,22 @@ public class TradeInPage extends SharedStepsUI {
         PageFactory.initElements(driver, this);
     }
 
+    public void clickOnGetStarted() {
+        safeClickOnElement(getStartedButton);
+    }
 
+    public DeviceTradeInPage clickOnNewCustomer() {
+        safeClickOnElement(newCustomerButton);
+
+        return new DeviceTradeInPage();
+    }
+
+    public DeviceTradeInPage navigateToDeviceTradeInPage() {
+        clickOnGetStarted();
+        clickOnNewCustomer();
+
+        return clickOnNewCustomer();
+    }
 
 
 }

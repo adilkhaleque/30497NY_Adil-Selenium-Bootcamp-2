@@ -17,10 +17,23 @@ public class StoresPage extends SharedStepsUI {
         PageFactory.initElements(driver, this);
     }
 
-    public TradeInPage clickOnDeviceSetupDropdown() {
+    public void clickOnDeviceSetupDropdown() {
         safeClickOnElement(deviceSetupDropdown);
 
+    }
+
+    public TradeInPage clickOnTradeInYourDevice() {
+        safeClickOnElement(tradeInYourDeviceLink);
+
         return new TradeInPage();
+    }
+
+    public TradeInPage navigateToTradeInPage() {
+        jsScrollUntilElementIsVisible(deviceSetupDropdown);
+        clickOnDeviceSetupDropdown();
+        clickOnTradeInYourDevice();
+
+        return clickOnTradeInYourDevice();
     }
 
 

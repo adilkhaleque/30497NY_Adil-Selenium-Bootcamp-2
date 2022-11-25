@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 public class DataProviders extends BasePage {
 
     @DataProvider(name = "testGoogle5GPhones")
-    public Object[][] getGoogleFilterText1() {
+    public Object[][] getGoogleFilterText() {
         return excel.readStringArrays("Google5GPhones");
     }
 
@@ -24,4 +24,11 @@ public class DataProviders extends BasePage {
     public Object[][] getItemDetails() {
         return excel.readStringArrays("Smartwatches");
     }
+
+    @DataProvider(name = "testTradeInDevice")
+    public Object[][] getDeviceOptions() {
+        return excel.readStringArrays("TradeInDevice");
+    }
+
+
 }

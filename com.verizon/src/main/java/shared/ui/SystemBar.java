@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import verizon_page_library.SearchResultsPage;
 import verizon_page_library.ShopPage;
+import verizon_page_library.StoresPage;
 
 public class SystemBar extends BasePage {
 
@@ -45,8 +46,10 @@ public class SystemBar extends BasePage {
         safeClickOnElement(searchButton);
     }
 
-    public void clickOnStoresButton() {
+    public StoresPage clickOnStoresButton() {
         safeClickOnElement(storesButton);
+
+        return new StoresPage();
     }
 
     public void clickOnDevicesButton() {

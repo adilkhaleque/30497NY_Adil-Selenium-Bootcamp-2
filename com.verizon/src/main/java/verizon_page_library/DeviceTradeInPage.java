@@ -21,6 +21,9 @@ public class DeviceTradeInPage extends SharedStepsUI {
     @FindBy(className = " css-1s2u09g-control")
     public WebElement modelDropdown;
 
+    @FindBy(xpath = "//div[@id='react-select-2-listbox']//div[@class=' css-11unzgr']//div")
+    public List<WebElement> models;
+
     @FindBy(xpath = "//div[@role='radiogroup']//label")
     public List<WebElement> colors;
 
@@ -48,6 +51,9 @@ public class DeviceTradeInPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@data-testid='tradein-header-container']//h1")
     public WebElement tradeInValueHeading;
 
+    @FindBy(xpath = "//div[@data-testid='tradein-header-container']//h3")
+    public WebElement tradeInDeviceHeading;
+
     public DeviceTradeInPage() {
         PageFactory.initElements(driver, this);
     }
@@ -57,11 +63,16 @@ public class DeviceTradeInPage extends SharedStepsUI {
     }
 
     public void clickOnContinueButton() {
+        jsScrollUntilElementIsVisible(continueButton);
         safeClickOnElement(continueButton);
     }
 
     public void clickOnConditionOption(WebElement element) {
         safeClickOnElement(element);
+    }
+
+    public String getTradeInDeviceHeadingText() {
+        return getTrimmedElementText(tradeInDeviceHeading);
     }
 
 
