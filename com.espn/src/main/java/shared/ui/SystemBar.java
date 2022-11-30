@@ -7,6 +7,7 @@ import espn_page_library.TeamPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SystemBar extends BasePage {
 
@@ -61,7 +62,10 @@ public class SystemBar extends BasePage {
     @FindBy (xpath = "//*[@id='global-search']/div/input[2]")
     public WebElement secondSearchButton;
 
-    @FindBy (xpath = "//li[@class='user']/a[@href]")
+//    @FindBy (xpath = "//li[@class='user']/a[@href]")
+//    public WebElement accountIcon;
+
+    @FindBy (id = "global-user-trigger")
     public WebElement accountIcon;
 
     @FindBy (xpath = "//div[@class='current-favorites']//a")
@@ -75,6 +79,39 @@ public class SystemBar extends BasePage {
 
     @FindBy (xpath = "//section[@class='FavMgmt__Col FavMgmt__Col--Right flex flex-column']//ul[3]//button[@class='Button Button--sm Button--alt']")
     public WebElement unfollowNbaButton;
+
+    @FindBy(xpath = "//*[@id='global-header']/div[2]/ul/li[2]/div/div/ul[1]/li[7]/a")
+    public WebElement logInPromptButton;
+
+    @FindBy(id = "disneyid-iframe")
+    public WebElement iFrame;
+
+    @FindBy(xpath = "//input[@type='email']")
+    public WebElement emailInputField;
+
+    @FindBy(xpath = "//input[@type='password']")
+    public WebElement passwordInputField;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement logInButton;
+
+    @FindBy(name = "firstName")
+    public WebElement firstNameInputField;
+
+    @FindBy(name = "lastName")
+    public WebElement lastNameInputField;
+
+    @FindBy(xpath = "//button[contains(text(), 'Done')]")
+    public WebElement doneButton;
+
+    @FindBy(xpath = "//*[@id='global-header']/div[2]/ul/li[2]/div/div/ul[1]/li[1]/span")
+    public WebElement welcomeUserText;
+
+//    @FindBy(xpath = "//li[@class='user']//div[@class='global-user']//ul//li[5]/a")
+//    public WebElement espnProfileButton;
+
+    @FindBy(xpath = "//*[@id='global-header']/div[2]/ul/li[2]/div/div/ul[1]/li[5]/a")
+    public WebElement espnProfileButton;
 
     public SystemBar() {
         PageFactory.initElements(driver, this);
@@ -215,5 +252,66 @@ public class SystemBar extends BasePage {
     public String getUnfollowFavoritesText() {
         return getTrimmedElementText(unfollowNbaButton);
     }
+
+    public void clickOnLogInPromptButton() {
+        hoverOverElement(accountIcon);
+        safeClickOnElement(logInPromptButton);
+    }
+
+    public void inputEmail(String email) {
+        sendKeysToElement(emailInputField, email);
+    }
+
+    public void inputPassword(String password) {
+        sendKeysToElement(passwordInputField, password);
+    }
+
+    public void clickOnLogInButton() {
+        safeClickOnElement(logInButton);
+    }
+
+    public void doLogin(String email, String password) {
+        clickOnLogInPromptButton();
+        switchToIFrame(iFrame);
+        inputEmail(email);
+        inputPassword(password);
+        clickOnLogInButton();
+    }
+
+    public void clickOnEspnProfile() {
+        hoverOverElement(accountIcon);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(espnProfileButton));
+        safeClickOnElement(espnProfileButton);
+    }
+
+    public void inputNewFirstName(String fName) {
+        clearSendKeysToElement(firstNameInputField, fName);
+    }
+
+    public void inputNewLastName(String lName) {
+        clearSendKeysToElement(lastNameInputField, lName);
+    }
+
+    public void clickOnDoneButton() {
+        jsScrollUntilElementIsVisible(doneButton);
+        safeClickOnElement(doneButton);
+    }
+
+    public void updateProfile(String fName, String lName) {
+        clickOnEspnProfile();
+        switchToIFrame(iFrame);
+        hoverOverElement(firstNameInputField);
+        inputNewFirstName(fName);
+        inputNewLastName(lName);
+        clickOnDoneButton();
+    }
+
+    public String getWelcomeUserText() {
+        switchToParentFrame();
+        safeClickOnElement(accountIcon);
+        return getTrimmedElementText(welcomeUserText);
+    }
+
+
 
 }

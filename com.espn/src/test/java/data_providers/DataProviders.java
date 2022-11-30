@@ -66,4 +66,9 @@ public class DataProviders extends BasePage {
     public Object[][] getDateForNhlScores() {
         return excel.readStringArrays("NHLScoresText");
     }
+
+    @DataProvider (name = "testUpdateAccount")
+    public Object[][] getAccountInfo() {
+        return excel.readStringArrays("ESPNAccount");
+    }
 }
