@@ -71,4 +71,9 @@ public class DataProviders extends BasePage {
     public Object[][] getAccountInfo() {
         return excel.readStringArrays("ESPNAccount");
     }
+
+    @DataProvider (name = "testEditions")
+    public Object[][] getEditionRegion() {
+        return excel.readStringArrays("Editions");
+    }
 }

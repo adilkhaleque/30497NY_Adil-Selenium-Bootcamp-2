@@ -4,10 +4,13 @@ import base.BasePage;
 import espn_page_library.SearchResultsPage;
 import espn_page_library.SportsLeaguePage;
 import espn_page_library.TeamPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 public class SystemBar extends BasePage {
 
@@ -20,8 +23,8 @@ public class SystemBar extends BasePage {
     @FindBy (xpath = "//li[@class='sports menu-nba']/a[@href]")
     public WebElement nbaButton;
 
-//    @FindBy (xpath = "//li[@class='teams nba']//ul[5]//li[@class='team']//span[@class='link-text']")
-//    public List<WebElement> pacificTeams;
+    @FindBy (xpath = "//li[@class='teams nba']//ul[5]//li[@class='team']//span[@class='link-text']")
+    public List<WebElement> pacificTeams;
 
     @FindBy (xpath = "//*[@id='global-nav']/ul/li[4]/div/ul[2]/li/div/ul[5]/li[4]/a")
     public WebElement lakersButton;
@@ -32,8 +35,8 @@ public class SystemBar extends BasePage {
     @FindBy (xpath = "//li[@class='teams mlb']//ul[1]//li[4]/a[@href]")
     public WebElement yankeesButton;
 
-//    @FindBy (xpath = "//li[@class='teams mlb']//ul[1]//li[@class='team']//span[@class='link-text']")
-//    public List<WebElement> americanLeagueEastTeams;
+    @FindBy (xpath = "//li[@class='teams mlb']//ul[1]//li[@class='team']//span[@class='link-text']")
+    public List<WebElement> americanLeagueEastTeams;
 
     @FindBy (xpath = "//*[@id='global-nav']/ul/li[6]/a")
     public WebElement soccerButton;
@@ -61,9 +64,6 @@ public class SystemBar extends BasePage {
 
     @FindBy (xpath = "//*[@id='global-search']/div/input[2]")
     public WebElement secondSearchButton;
-
-//    @FindBy (xpath = "//li[@class='user']/a[@href]")
-//    public WebElement accountIcon;
 
     @FindBy (id = "global-user-trigger")
     public WebElement accountIcon;
@@ -107,30 +107,33 @@ public class SystemBar extends BasePage {
     @FindBy(xpath = "//*[@id='global-header']/div[2]/ul/li[2]/div/div/ul[1]/li[1]/span")
     public WebElement welcomeUserText;
 
-//    @FindBy(xpath = "//li[@class='user']//div[@class='global-user']//ul//li[5]/a")
-//    public WebElement espnProfileButton;
-
     @FindBy(xpath = "//*[@id='global-header']/div[2]/ul/li[2]/div/div/ul[1]/li[5]/a")
     public WebElement espnProfileButton;
+
+    @FindBy(xpath = "//header[@id='global-header']//div[@class='global-user']//ul[@class='account-management']//a[@class='Editions__Item Editions__Item--user']")
+    public WebElement editionButton;
+
+    @FindBy(xpath = "//div[@class='lightbox-container']//iframe")
+    public WebElement editionsIFrame;
+
+    @FindBy(xpath = "//div[@class='lightbox__content lightbox__content--mobile']//ul//li/a")
+    public List<WebElement> editions;
+
+    @FindBy(xpath = "//div[@class='global-user-container']//ul[@class='account-management']//a/span")
+    public WebElement editionText;
 
     public SystemBar() {
         PageFactory.initElements(driver, this);
     }
 
-//    public boolean areEqualLists (List<WebElement> elements, List<Object> data) {
-//        if (elements.equals(data)) {
-//            return true;
-//        }
-//        return false;
-//    }
 
-//    public void selectTeam(List<WebElement> elements, int teamIndex) {
-//        try {
-//            getTrimmedElementText(elements.get(teamIndex));
-//        } catch (IndexOutOfBoundsException e) {
-//            getTrimmedElementText(elements.get(elements.size() - 1));
-//        }
-//    }
+    public void extractTeam(List<WebElement> elements, int teamIndex) {
+        try {
+            getTrimmedElementText(elements.get(teamIndex));
+        } catch (IndexOutOfBoundsException e) {
+            getTrimmedElementText(elements.get(elements.size() - 1));
+        }
+    }
 
     public SportsLeaguePage clickOnNba() {
         safeClickOnElement(nbaButton);
@@ -169,15 +172,15 @@ public class SystemBar extends BasePage {
         safeClickOnElement(secondSearchButton);
     }
 
-//    public void extractNBATeamNames() {
-//        hoverOverElement(nbaButton);
-//        selectTeam(pacificTeams, pacificTeams.size());
-//    }
+    public void extractNBATeamNames() {
+        hoverOverElement(nbaButton);
+        extractTeam(pacificTeams, pacificTeams.size());
+    }
 
-//    public void extractMLBTeamNames() {
-//        hoverOverElement(mlbButton);
-//        selectTeam(americanLeagueEastTeams, americanLeagueEastTeams.size());
-//    }
+    public void extractMLBTeamNames() {
+        hoverOverElement(mlbButton);
+        extractTeam(americanLeagueEastTeams, americanLeagueEastTeams.size());
+    }
 
     public String getLakersText() {
         return getTrimmedElementText(lakersButton);
@@ -312,6 +315,29 @@ public class SystemBar extends BasePage {
         return getTrimmedElementText(welcomeUserText);
     }
 
+    public void clickOnEditionButton() {
+        safeClickOnElement(editionButton);
+    }
 
+    public void navigateToEditions() {
+        hoverOverElement(accountIcon);
+        clickOnEditionButton();
+    }
+
+    public void selectEdition(List<WebElement> elements, int index) {
+        switchToIFrame(editionsIFrame);
+        webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+        try {
+            safeClickOnElement(elements.get(index));
+        } catch (IndexOutOfBoundsException e) {
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+    }
+
+    public String getEditionText() {
+        switchToParentFrame();
+        safeClickOnElement(accountIcon);
+        return getTrimmedElementText(editionText);
+    }
 
 }
