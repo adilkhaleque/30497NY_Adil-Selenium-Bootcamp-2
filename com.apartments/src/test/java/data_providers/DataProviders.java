@@ -34,4 +34,14 @@ public class DataProviders extends BasePage {
     public Object[][] getRentalInformation() {
         return excel.readStringArrays("RentCalculator");
     }
+
+    @DataProvider(name = "testAuthentication")
+    public Object[][] getAuthenticationInformation() {
+        return excel.readStringArrays("Authentication");
+    }
+
+    @DataProvider(name = "testChangeLanguage")
+    public Object[][] getLanguageText() {
+        return excel.readStringArrays("ChangeLanguage");
+    }
 }
