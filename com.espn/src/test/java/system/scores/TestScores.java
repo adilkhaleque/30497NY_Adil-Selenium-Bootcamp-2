@@ -15,6 +15,6 @@ public class TestScores extends BasePage {
 
         sportsLeaguePage.getNhlScores();
 
-        Assert.assertEquals(sportsLeaguePage.getNhlScoresDateHeadingText(), expected);
+        Assert.assertEquals(sportsLeaguePage.getNhlScoresHeadingText(), expected);
     }
 }

@@ -19,6 +19,8 @@
             <class name="system.wwe_history.TestViewWweUniversalChampionshipHistory"/>
             <class name="system.add_favorites.TestAddFavorites"/>
             <class name="system.scores.TestScores"/>
+            <class name="system.update_profile.TestUpdateProfile"/>
+            <class name="system.change_edition.TestChangeEdition"/>
         </classes>
     </test>
 

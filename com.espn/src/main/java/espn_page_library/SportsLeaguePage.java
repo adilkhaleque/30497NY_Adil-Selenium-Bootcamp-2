@@ -17,10 +17,10 @@ public class SportsLeaguePage extends SharedStepsUI {
     @FindBy(xpath = "//h2[contains(text(), 'Los Angeles Lakers')]")
     public WebElement lakersTitle;
 
-    @FindBy(xpath = "//*[@id='fittPageContainer']/div[3]/div/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[3]/div/section/div/a/h2")
+    @FindBy(xpath = "//h2[contains(text(), 'New York Yankees')]")
     public WebElement yankeesTitle;
 
-    @FindBy(xpath = "//*[@id='global-nav-secondary']/div/ul/li[10]/a")
+    @FindBy(xpath = "//a[@name='&lpos=subnav+subnav_mlb_teams']")
     public WebElement mlbTeamsButton;
 
     @FindBy(xpath = "//*[@id='global-nav-secondary']/div/ul/li[8]/a")
@@ -29,7 +29,7 @@ public class SportsLeaguePage extends SharedStepsUI {
     @FindBy (xpath = "//tbody//tr[10]//a[@href]")
     public WebElement lewisHamiltonLink;
 
-    @FindBy (xpath = "//*[@id='global-nav-secondary']/div/ul/li[5]/a")
+    @FindBy (xpath = "//a[@name='&lpos=subnav+subnav_soccer_fixtures_&_results']")
     public WebElement fixturesButton;
 
     @FindBy (xpath = "//div[@data-id='20221122']/a")
@@ -53,8 +53,8 @@ public class SportsLeaguePage extends SharedStepsUI {
     @FindBy (xpath = "//*[@id='global-nav-secondary']/div/ul/li[5]/a")
     public WebElement p4pTab;
 
-    @FindBy (xpath = "//*[@id='article-feed']/article[1]/div/div[2]/p[8]/strong")
-    public WebElement fighterRecord;
+    @FindBy (xpath = "//header[@class='article-header']//h1[contains(text(), 'MMA pound-for-pound rankings')]")
+    public WebElement p4pRankingsTitle;
 
     @FindBy (xpath = "//div[@class='DatePicker']//button[@aria-label='Calendar']")
     public WebElement calendarIcon;
@@ -62,8 +62,8 @@ public class SportsLeaguePage extends SharedStepsUI {
     @FindBy (xpath = "//div[@class='DatePicker__MonthContainer calendar--embedded']//ul[1]//li[@data-idx='6']")
     public WebElement specificDayForNhlScores;
 
-    @FindBy (xpath = "//header[@aria-label='Saturday, November 5, 2022']//h3")
-    public WebElement nhlScoresDateHeading;
+    @FindBy (xpath = "//h1[contains(text(), 'NHL Scoreboard')]")
+    public WebElement nhlScoresHeading;
 
     public SportsLeaguePage() {
         PageFactory.initElements(driver, this);
@@ -142,13 +142,12 @@ public class SportsLeaguePage extends SharedStepsUI {
         safeClickOnElement(specificDayForNhlScores);
     }
 
-    public String getNhlScoresDateHeadingText() {
-        return getTrimmedElementText(nhlScoresDateHeading);
+    public String getNhlScoresHeadingText() {
+        return getTrimmedElementText(nhlScoresHeading);
     }
 
-    public String getFighterRecordText() {
-        //jsScrollUntilElementIsVisible(fighterRecord);
-        return getTrimmedElementText(fighterRecord);
+    public String getP4pRankingsTitleText() {
+        return getTrimmedElementText(p4pRankingsTitle).substring(0, 28);
     }
 
     public AthletePage clickOnLewisHamilton() {

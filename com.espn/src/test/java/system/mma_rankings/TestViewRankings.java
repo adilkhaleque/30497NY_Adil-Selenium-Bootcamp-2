@@ -15,7 +15,7 @@ public class TestViewRankings extends BasePage {
 
         sportsLeaguePage.clickP4pTab();
 
-        Assert.assertEquals(sportsLeaguePage.getFighterRecordText(), expected);
+        Assert.assertEquals(sportsLeaguePage.getP4pRankingsTitleText(), expected);
 
     }
 }
