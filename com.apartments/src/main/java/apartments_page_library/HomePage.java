@@ -1,9 +1,11 @@
 package apartments_page_library;
 
 import base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
 
@@ -27,7 +29,7 @@ public class HomePage extends BasePage {
     }
 
     public void inputSearch(String searchTerm) {
-        sendKeysToElement(searchBox, searchTerm);
+        clearSendKeysToElement(searchBox, searchTerm);
     }
 
     public void clickOnSearchButton() {
@@ -48,8 +50,9 @@ public class HomePage extends BasePage {
         return new RentAffordabilityCalculatorPage();
     }
 
-    public SearchResultsPage doSearch(String searchTerm) {
+    public SearchResultsPage doSearch(String searchTerm) throws InterruptedException {
         inputSearch(searchTerm);
+        Thread.sleep(2000);
         clickOnSearchButton();
 
         return new SearchResultsPage();

@@ -10,6 +10,9 @@ import java.util.List;
 
 public class SearchResultsPage extends BasePage {
 
+    @FindBy(id = "searchBarLookup")
+    public WebElement searchResultsSearchBar;
+
     @FindBy(id = "rentRangeLink")
     public WebElement priceDropdown;
 
@@ -88,6 +91,9 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//*[@id='advancedFilters']/section/button[1]")
     public WebElement saveButton;
 
+    @FindBy(xpath = "//section[@id='marketingBlurb']//div[@class='mortar-wrapper']/h2")
+    public WebElement forRentLocation;
+
     @FindBy(xpath = "//div[@id='placardContainer']/ul/li[1]/article/header/div[3]/a")
     public WebElement favoritesButton1;
 
@@ -123,6 +129,9 @@ public class SearchResultsPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='placardContainer']/ul/li[1]/article/header/div[1]/a")
     public WebElement rentalProperty;
+
+    @FindBy(xpath = "//a[@id='rentRangeLink']/span[1]")
+    public WebElement rentalPriceRangeText;
 
     @FindBy(xpath = "//section[@id='map']/div[2]/div[6]/div[2]/i")
     public WebElement zoomOutButton;
@@ -199,6 +208,15 @@ public class SearchResultsPage extends BasePage {
         safeClickOnElement(rentalProperty);
 
         return new PropertyPage();
+    }
+
+    public String getRentalPriceRangeText() {
+        return getTrimmedElementText(rentalPriceRangeText).substring(3, 5);
+    }
+
+    public String getForRentLocation() {
+        hoverOverElement(forRentLocation);
+        return getTrimmedElementText(forRentLocation).substring(23, 36);
     }
 
     public PropertyPage clickOnProperty() {

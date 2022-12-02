@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class TestFavorites extends BasePage {
 
     @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testAddFavoritesDP")
-    public void testAddFavorites(String searchTerm, String expectedCount) {
+    public void testAddFavorites(String searchTerm, String expectedCount) throws InterruptedException {
         HomePage homePage = new HomePage();
 
         SearchResultsPage searchResultsPage = homePage.doSearch(searchTerm);
@@ -22,7 +22,7 @@ public class TestFavorites extends BasePage {
     }
 
     @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testRemoveFavoritesDP")
-    public void testRemoveFavorites(String searchTerm, String expectedCount) {
+    public void testRemoveFavorites(String searchTerm, String expectedCount) throws InterruptedException {
         HomePage homePage = new HomePage();
 
         SearchResultsPage searchResultsPage = homePage.doSearch(searchTerm);

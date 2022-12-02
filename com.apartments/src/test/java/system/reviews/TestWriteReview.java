@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class TestWriteReview extends BasePage {
 
     @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testReviewDP")
-    public void testWriteAReview(String searchTerm, String headline, String body, String buttonText) {
+    public void testWriteAReview(String searchTerm, String headline, String body, String buttonText) throws InterruptedException {
         HomePage homePage = new HomePage();
         SearchResultsPage searchResultsPage = homePage.doSearch(searchTerm);
         PropertyPage propertyPage = searchResultsPage.clickOnProperty();
