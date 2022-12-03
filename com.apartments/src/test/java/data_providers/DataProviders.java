@@ -44,4 +44,9 @@ public class DataProviders extends BasePage {
     public Object[][] getLanguageText() {
         return excel.readStringArrays("ChangeLanguage");
     }
+
+    @DataProvider(name = "testFindLAHomesForRent")
+    public Object[][] getLAHomesOption() {
+        return excel.readStringArrays("HomesForRent");
+    }
 }

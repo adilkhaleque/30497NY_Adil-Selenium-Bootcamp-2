@@ -381,4 +381,12 @@ public class BasePage {
         return false;
     }
 
+    public void selectOption(int index, List<WebElement> elements) {
+        try {
+            safeClickOnElement(elements.get(index));
+        } catch (IndexOutOfBoundsException e) {
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+    }
+
 }

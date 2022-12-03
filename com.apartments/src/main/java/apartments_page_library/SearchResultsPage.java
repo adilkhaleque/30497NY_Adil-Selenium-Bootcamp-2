@@ -70,11 +70,23 @@ public class SearchResultsPage extends BasePage {
     @FindBy(id = "_baths")
     public WebElement anyBathsOption;
 
-    @FindBy(xpath = "//*[@id='advancedFilterUnitAmenities']/li[1]/a")
-    public WebElement airConditioning;
+    @FindBy(xpath = "//label[@for='UnitAmenities_16']")
+    public WebElement airConditioningOption;
 
-    @FindBy(xpath = "//*[@id='advancedFilterUnitAmenities']/li[2]/a")
-    public WebElement washerAndDryer;
+    @FindBy(xpath = "//label[@for='UnitAmenities_2']")
+    public WebElement washerAndDryerOption;
+
+    @FindBy(xpath = "//label[@for='UnitAmenities_4']")
+    public WebElement dishwasherOption;
+
+    @FindBy(xpath = "//label[@for='CommunityAmenities_65536']")
+    public WebElement parkingOption;
+
+    @FindBy(xpath = "//label[@for='CommunityAmenities_512']")
+    public WebElement poolOption;
+
+    @FindBy(xpath = "//label[@for='AdditionalAmenities_1073741824']")
+    public WebElement garageOption;
 
     @FindBy(id = "Specialties_128")
     public WebElement cheapAffordability;
@@ -214,9 +226,9 @@ public class SearchResultsPage extends BasePage {
         return getTrimmedElementText(rentalPriceRangeText).substring(3, 5);
     }
 
-    public String getForRentLocation() {
+    public String getForRentLocationText() {
         hoverOverElement(forRentLocation);
-        return getTrimmedElementText(forRentLocation).substring(23, 36);
+        return getTrimmedElementText(forRentLocation);
     }
 
     public PropertyPage clickOnProperty() {
@@ -264,5 +276,19 @@ public class SearchResultsPage extends BasePage {
         clickOnSelectorOptions(luxuryAffordability);
         clickOnSelectorOptions(fiveStarRatings);
         clickOnDoneButton();
+    }
+
+    public void chooseAmenitiesForRental() {
+        clickOnSelectors(moreDropdown);
+        clickOnSelectorOptions(airConditioningOption);
+        clickOnSelectorOptions(washerAndDryerOption);
+        clickOnSelectorOptions(dishwasherOption);
+        clickOnSelectorOptions(parkingOption);
+        clickOnSelectorOptions(poolOption);
+        jsScrollUntilElementIsVisible(garageOption);
+        clickOnSelectorOptions(garageOption);
+        clickOnDoneButton();
+        clickOnSortButton();
+        clickOnRentSortOption();
     }
 }

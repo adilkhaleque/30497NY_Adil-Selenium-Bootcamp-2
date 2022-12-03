@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
     @FindBy(id = "quickSearchLookup")
@@ -48,6 +50,12 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//*[@id='mainHeaderNavigation']/div[2]/a/span")
     public WebElement spanishLanguageText;
+
+    @FindBy(xpath = "//ul[@id='menuNavigation']//li[@id='menuNavItemContainer2']/a")
+    public WebElement homesForRent;
+
+    @FindBy(xpath = "//li[@id='menuNavItemContainer2']//ul[@class='submenu properties']//li/a")
+    public List<WebElement> rentalHomeLocations;
 
     public HomePage() {
         PageFactory.initElements(driver, this);
@@ -107,6 +115,10 @@ public class HomePage extends BasePage {
         return new RentAffordabilityCalculatorPage();
     }
 
+    public void clickOnHomesForRent() {
+        safeClickOnElement(homesForRent);
+    }
+
     public SearchResultsPage doSearch(String searchTerm) throws InterruptedException {
         inputSearch(searchTerm);
         Thread.sleep(2000);
@@ -135,6 +147,16 @@ public class HomePage extends BasePage {
     public void changeLanguage() {
         clickOnLanguageButton();
         clickOnSpanish();
+    }
+
+    public SearchResultsPage selectRentalHomeLocation(int index) {
+        try {
+            safeClickOnElement(rentalHomeLocations.get(index));
+        } catch (IndexOutOfBoundsException e) {
+            safeClickOnElement(rentalHomeLocations.get(rentalHomeLocations.size() - 1));
+        }
+
+        return new SearchResultsPage();
     }
 
 }
