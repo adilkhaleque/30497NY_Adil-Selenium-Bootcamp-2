@@ -4,6 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@id='headerLoginSection']//div/button/span")
     public WebElement accountNameText;
 
-    @FindBy(id = "iFrameResizer1")
+    @FindBy(id = "iFrameResizer0")
     public WebElement signInIFrame;
 
     @FindBy(xpath = "//header[@id='mainHeader']//div[@class='header-switch-language-wrapper mortar-wrapper']/a")
@@ -137,6 +138,7 @@ public class HomePage extends BasePage {
 
     public void doSignIn(String email, String password) {
         clickOnSignInPromptButton();
+        webDriverWait.until(ExpectedConditions.visibilityOf(signInIFrame));
         switchToIFrame(signInIFrame);
         inputEmail(email);
         inputPassword(password);
