@@ -1,6 +1,7 @@
 package apartments_page_library;
 
 import base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -57,6 +58,24 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//li[@id='menuNavItemContainer2']//ul[@class='submenu properties']//li/a")
     public List<WebElement> rentalHomeLocations;
+
+    @FindBy(xpath = "//ul[@id='menuNavigation']//li[@id='menuNavItemContainer1']")
+    public WebElement apartmentsForRent;
+
+    @FindBy(xpath = "//li[@id='menuNavItemContainer1']//ul[@class='submenu properties']//li/a")
+    public List<WebElement> rentalApartmentLocations;
+
+    @FindBy(xpath = "//ul[@id='menuNavigation']//li[@id='menuNavItemContainer3']")
+    public WebElement condosForRent;
+
+    @FindBy(xpath = "//li[@id='menuNavItemContainer3']//ul[@class='submenu properties']//li/a")
+    public List<WebElement> rentalCondoLocations;
+
+    @FindBy(xpath = "//ul[@id='menuNavigation']//li[@id='menuNavItemContainer4']")
+    public WebElement townhomesForRent;
+
+    @FindBy(xpath = "//li[@id='menuNavItemContainer4']//ul[@class='submenu properties']//li/a")
+    public List<WebElement> rentalTownhomeLocations;
 
     public HomePage() {
         PageFactory.initElements(driver, this);
@@ -120,7 +139,20 @@ public class HomePage extends BasePage {
         safeClickOnElement(homesForRent);
     }
 
+    public void clickOnApartmentsForRent() {
+        safeClickOnElement(apartmentsForRent);
+    }
+
+    public void clickOnCondosForRent() {
+        safeClickOnElement(condosForRent);
+    }
+
+    public void clickOnTownhomesForRent() {
+        safeClickOnElement(townhomesForRent);
+    }
+
     public SearchResultsPage doSearch(String searchTerm) throws InterruptedException {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.id("quickSearchLookup"))).click();
         inputSearch(searchTerm);
         Thread.sleep(2000);
         clickOnSearchButton();
@@ -151,11 +183,11 @@ public class HomePage extends BasePage {
         clickOnSpanish();
     }
 
-    public SearchResultsPage selectRentalHomeLocation(int index) {
+    public SearchResultsPage selectRentalLocation(int index, List<WebElement> locations) {
         try {
-            safeClickOnElement(rentalHomeLocations.get(index));
+            safeClickOnElement(locations.get(index));
         } catch (IndexOutOfBoundsException e) {
-            safeClickOnElement(rentalHomeLocations.get(rentalHomeLocations.size() - 1));
+            safeClickOnElement(locations.get(locations.size() - 1));
         }
 
         return new SearchResultsPage();

@@ -100,8 +100,8 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//*[@id='advancedFilters']/section/button[2]")
     public WebElement doneButton;
 
-    @FindBy(xpath = "//*[@id='advancedFilters']/section/button[1]")
-    public WebElement saveButton;
+    @FindBy(id = "saveSearchIcon")
+    public WebElement savePromptButton;
 
     @FindBy(xpath = "//section[@id='marketingBlurb']//div[@class='mortar-wrapper']/h2")
     public WebElement forRentLocation;
@@ -148,6 +148,16 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//section[@id='map']/div[2]/div[6]/div[2]/i")
     public WebElement zoomOutButton;
 
+    @FindBy(id = "savedSearchBtn")
+    public WebElement saveSearchButton;
+
+    @FindBy(id = "savedSearchEmailAlerts")
+    public WebElement emailAlertsCheckbox;
+    //fieldset[@class='checkbox']//label[@for='savedSearchEmailAlerts']
+
+    @FindBy(xpath = "//div[@class='summary']")
+    public WebElement savedSearchSummary;
+
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
     }
@@ -184,8 +194,8 @@ public class SearchResultsPage extends BasePage {
         safeClickOnElement(doneButton);
     }
 
-    public void clickOnSaveButton() {
-        safeClickOnElement(saveButton);
+    public void clickOnSaveSearchPromptButton() {
+        safeClickOnElement(savePromptButton);
     }
 
     public String getPropertyTitleText() {
@@ -229,6 +239,18 @@ public class SearchResultsPage extends BasePage {
     public String getForRentLocationText() {
         hoverOverElement(forRentLocation);
         return getTrimmedElementText(forRentLocation);
+    }
+
+    public void clickOnSaveSearchButton() {
+        safeClickOnElement(saveSearchButton);
+    }
+
+    public void clickOnEmailAlertsCheckbox() {
+        safeClickOnElement(emailAlertsCheckbox);
+    }
+
+    public String getSavedSearchSummaryText() {
+        return getTrimmedElementText(savedSearchSummary);
     }
 
     public PropertyPage clickOnProperty() {

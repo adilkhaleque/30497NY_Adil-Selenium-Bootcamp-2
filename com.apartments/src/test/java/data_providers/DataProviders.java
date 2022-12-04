@@ -45,8 +45,28 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("ChangeLanguage");
     }
 
-    @DataProvider(name = "testLAHomesForRent")
-    public Object[][] getLARentalHomesInfo() {
-        return excel.readStringArrays("LAHomesForRent");
+    @DataProvider(name = "testHomesForRent")
+    public Object[][] getRentalHomesInfo() {
+        return excel.readStringArrays("HomesForRent");
+    }
+
+    @DataProvider(name = "testApartmentsForRent")
+    public Object[][] getRentalApartmentsInfo() {
+        return excel.readStringArrays("ApartmentsForRent");
+    }
+
+    @DataProvider(name = "testCondosForRent")
+    public Object[][] getRentalCondosInfo() {
+        return excel.readStringArrays("CondosForRent");
+    }
+
+    @DataProvider(name = "testTownhomesForRent")
+    public Object[][] getTownhomesInfo() {
+        return excel.readStringArrays("TownhomesForRent");
+    }
+
+    @DataProvider(name = "testSavedSearch")
+    public Object[][] getSearchSummary() {
+        return excel.readStringArrays("SavedSearch");
     }
 }
