@@ -26,7 +26,7 @@ public class DataProviders extends BasePage {
     }
 
     @DataProvider(name = "testTradeInDevice")
-    public Object[][] getDeviceOptions() {
+    public Object[][] getTradeInInfo() {
         return excel.readStringArrays("TradeInDevice");
     }
 
