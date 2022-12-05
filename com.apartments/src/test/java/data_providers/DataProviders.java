@@ -69,4 +69,24 @@ public class DataProviders extends BasePage {
     public Object[][] getSearchSummary() {
         return excel.readStringArrays("SavedSearch");
     }
+
+    @DataProvider(name = "testNearbyNeighborhoods")
+    public Object[][] getNearbyNeighborhoods() {
+        return excel.readStringArrays("NearbyNeighborhoods");
+    }
+
+    @DataProvider(name = "testNearbyTransit")
+    public Object[][] getNearbyTransit() {
+        return excel.readStringArrays("NearbyTransit");
+    }
+
+    @DataProvider(name = "testNearbyRestaurants")
+    public Object[][] getNearbyRestaurants() {
+        return excel.readStringArrays("NearbyRestaurants");
+    }
+
+    @DataProvider(name = "testNearbyCampuses")
+    public Object[][] getNearbyCampuses() {
+        return excel.readStringArrays("NearbyCampuses");
+    }
 }

@@ -158,6 +158,33 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//div[@class='summary']")
     public WebElement savedSearchSummary;
 
+    @FindBy(xpath = "//div[@id='overlaysMenuView']//a")
+    public WebElement nearbyButton;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/div/button[2]")
+    public WebElement nearbyNeighborhoodsButton;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/a/span[2]")
+    public WebElement neighborhoodsText;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/div/button[3]")
+    public WebElement nearbyTransitButton;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/a/span[2]")
+    public WebElement transitText;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/div/button[4]")
+    public WebElement nearbyRestaurantsButton;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/a/span[2]")
+    public WebElement restaurantsText;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/div/button[5]")
+    public WebElement nearbyCampusesButton;
+
+    @FindBy(xpath = "//div[@id='overlaysMenuView']/div/a/span[2]")
+    public WebElement campusesText;
+
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
     }
@@ -251,6 +278,42 @@ public class SearchResultsPage extends BasePage {
 
     public String getSavedSearchSummaryText() {
         return getTrimmedElementText(savedSearchSummary);
+    }
+
+    public void clickOnNearbyButton() {
+        safeClickOnElement(nearbyButton);
+    }
+
+    public void clickOnNeighborhoods() {
+        safeClickOnElement(nearbyNeighborhoodsButton);
+    }
+
+    public void clickOnTransit() {
+        safeClickOnElement(nearbyTransitButton);
+    }
+
+    public void clickOnRestaurants() {
+        safeClickOnElement(nearbyRestaurantsButton);
+    }
+
+    public void clickOnCampuses() {
+        safeClickOnElement(nearbyCampusesButton);
+    }
+
+    public String getNeighborhoodsText() {
+        return getTrimmedElementText(neighborhoodsText);
+    }
+
+    public String getTransitText() {
+        return getTrimmedElementText(transitText);
+    }
+
+    public String getRestaurantsText() {
+        return getTrimmedElementText(restaurantsText);
+    }
+
+    public String getCampusesText() {
+        return getTrimmedElementText(campusesText);
     }
 
     public PropertyPage clickOnProperty() {
