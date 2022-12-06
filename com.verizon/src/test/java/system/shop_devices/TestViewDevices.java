@@ -38,4 +38,16 @@ public class TestViewDevices extends BasePage {
 
         Assert.assertEquals(searchResultsPage.getShopTabletsHeadingText(), expectedText);
     }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testViewNewestSmartwatches")
+    public void testViewNewestSmartwatches(String index, String expectedText) {
+
+        HomePage homePage = new HomePage();
+        SearchResultsPage searchResultsPage = homePage.systemBar.navigateToWatches();
+        searchResultsPage.clickOnSortByDropdown();
+        searchResultsPage.selectSortByOption(Integer.parseInt(index));
+        searchResultsPage.clickOnSortByDropdown();
+
+        Assert.assertEquals(searchResultsPage.getNewestOptionText(), expectedText);
+    }
 }

@@ -35,4 +35,14 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("AppleTablets");
     }
 
+    @DataProvider(name = "testViewNewestSmartwatches")
+    public Object[][] getNewestText() {
+        return excel.readStringArrays("NewestWatches");
+    }
+
+    @DataProvider(name = "testCompareHotspots")
+    public Object[][] getCompareText() {
+        return excel.readStringArrays("CompareHotspots");
+    }
+
 }

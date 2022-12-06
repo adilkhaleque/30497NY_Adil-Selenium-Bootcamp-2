@@ -183,6 +183,21 @@ public class SearchResultsPage extends SharedStepsUI {
     @FindBy(xpath = "//*[@id='breadCrumb']/h1")
     public WebElement shopTabletsHeading;
 
+    @FindBy(xpath = "//select[@label='Sort by:']")
+    public WebElement sortByDropdown;
+
+    @FindBy(xpath = "//select[@label='Sort by:']//option")
+    public List<WebElement> sortByOptions;
+
+    @FindBy(xpath = "//select[@label='Sort by:']//option[2]")
+    public WebElement newestOption;
+
+    @FindBy(xpath = "//div[@data-testid='stop-propagation']//label")
+    public List<WebElement> compareHotspotsCheckboxes;
+
+    @FindBy(id = "compareButton")
+    public WebElement compareButton;
+
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
     }
@@ -364,6 +379,24 @@ public class SearchResultsPage extends SharedStepsUI {
 
     public String getShopTabletsHeadingText() {
         return getTrimmedElementText(shopTabletsHeading);
+    }
+
+    public void clickOnSortByDropdown() {
+        safeClickOnElement(sortByDropdown);
+    }
+
+    public void selectSortByOption(int index) {
+        selectFromDropdownByIndex(sortByDropdown, index);
+    }
+
+    public String getNewestOptionText() {
+        return getTrimmedElementText(newestOption);
+    }
+
+    public CompareDevicesPage clickOnCompareButton() {
+        safeClickOnElement(compareButton);
+
+        return new CompareDevicesPage();
     }
 
     public void chooseSmartphone() {

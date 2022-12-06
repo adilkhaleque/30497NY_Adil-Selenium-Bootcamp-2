@@ -4,6 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import verizon_page_library.CompareDevicesPage;
 import verizon_page_library.SearchResultsPage;
 import verizon_page_library.ShopPage;
 import verizon_page_library.StoresPage;
@@ -36,6 +37,12 @@ public class SystemBar extends BasePage {
 
     @FindBy(id = "gnav20-Shop-L3-8")
     public WebElement tabletsAndLaptops;
+
+    @FindBy(id = "gnav20-Shop-L3-9")
+    public WebElement watches;
+
+    @FindBy(id = "gnav20-Shop-L3-11")
+    public WebElement jetpacksAndHotspots;
 
     public SystemBar() {
         PageFactory.initElements(driver, this);
@@ -87,6 +94,18 @@ public class SystemBar extends BasePage {
         return new SearchResultsPage();
     }
 
+    public SearchResultsPage clickOnWatches() {
+        safeClickOnElement(watches);
+
+        return new SearchResultsPage();
+    }
+
+    public SearchResultsPage clickOnJetpacksAndHotspots() {
+        safeClickOnElement(jetpacksAndHotspots);
+
+        return new SearchResultsPage();
+    }
+
     public SearchResultsPage doSearch(String searchTerm) {
         clickOnSearchButton();
         inputSearch(searchTerm);
@@ -115,6 +134,23 @@ public class SystemBar extends BasePage {
         clickOnShopButton();
         clickOnDevicesButton();
         clickOnTabletsAndLaptops();
+
+        return new SearchResultsPage();
+    }
+
+    public SearchResultsPage navigateToWatches() {
+        clickOnShopButton();
+        clickOnDevicesButton();
+        clickOnWatches();
+
+        return new SearchResultsPage();
+    }
+
+    public SearchResultsPage navigateToJetpacksAndHotspots() {
+        clickOnShopButton();
+        clickOnDevicesButton();
+        jsScrollUntilElementIsVisible(jetpacksAndHotspots);
+        clickOnJetpacksAndHotspots();
 
         return new SearchResultsPage();
     }
