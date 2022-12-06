@@ -1,4 +1,4 @@
-package system.shop_5g_phones;
+package system.shop_devices;
 
 import base.BasePage;
 import org.testng.Assert;
@@ -7,7 +7,7 @@ import verizon_page_library.HomePage;
 import verizon_page_library.SearchResultsPage;
 import verizon_page_library.ShopPage;
 
-public class TestView5gPhones extends BasePage {
+public class TestViewDevices extends BasePage {
 
     @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testGoogle5GPhones")
     public void testViewGoogle5gPhones(String expectedText) {
@@ -27,5 +27,15 @@ public class TestView5gPhones extends BasePage {
         SearchResultsPage searchResultsPage = shopPage.clickOnSamsungPhoneButton();
 
         Assert.assertEquals(searchResultsPage.getSamsungFilterText(), expectedText);
+    }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testAppleTablets")
+    public void testViewAppleTablets(String expectedText) {
+
+        HomePage homePage = new HomePage();
+        SearchResultsPage searchResultsPage = homePage.systemBar.navigateToTabletsAndLaptopsResults();
+        searchResultsPage.clickOnAppleTabletsButton();
+
+        Assert.assertEquals(searchResultsPage.getShopTabletsHeadingText(), expectedText);
     }
 }

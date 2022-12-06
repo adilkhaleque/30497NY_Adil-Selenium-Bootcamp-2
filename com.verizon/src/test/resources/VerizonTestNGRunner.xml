@@ -11,7 +11,7 @@
 
     <test name="smoke">
         <classes>
-            <class name="system.shop_5g_phones.TestView5gPhones"/>
+            <class name="system.shop_devices.TestViewDevices"/>
         </classes>
     </test>
 

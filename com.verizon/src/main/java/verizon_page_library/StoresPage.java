@@ -33,7 +33,7 @@ public class StoresPage extends SharedStepsUI {
         clickOnDeviceSetupDropdown();
         clickOnTradeInYourDevice();
 
-        return clickOnTradeInYourDevice();
+        return new TradeInPage();
     }
 
 

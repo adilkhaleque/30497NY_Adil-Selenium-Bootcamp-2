@@ -30,5 +30,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("TradeInDevice");
     }
 
+    @DataProvider(name = "testAppleTablets")
+    public Object[][] getAppleTabletsHeadingText() {
+        return excel.readStringArrays("AppleTablets");
+    }
 
 }

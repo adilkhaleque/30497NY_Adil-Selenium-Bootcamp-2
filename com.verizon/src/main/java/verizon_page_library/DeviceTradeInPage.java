@@ -18,7 +18,7 @@ public class DeviceTradeInPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@class='StyledDiv-sc-n9jxr1-0 brxmtV']//label")
     public List<WebElement> deviceTypes;
 
-    @FindBy(className = " css-1s2u09g-control")
+    @FindBy(xpath = "//div[@id='page']/div[3]/div/div[2]/div/div/div/div[5]/div[2]/div/div")
     public WebElement modelDropdown;
 
     @FindBy(xpath = "//div[@id='react-select-2-listbox']//div[@class=' css-11unzgr']//div")
@@ -26,6 +26,9 @@ public class DeviceTradeInPage extends SharedStepsUI {
 
     @FindBy(xpath = "//div[@role='radiogroup']//label")
     public List<WebElement> colors;
+
+    @FindBy(xpath = "//*[@id='page']/div[3]/div/div[2]/div/div/div/div[7]/div/div[2]/div/span[4]/label")
+    public WebElement gray;
 
     @FindBy(xpath = "//select[@label='Storage']")
     public WebElement storageDropdown;
@@ -62,6 +65,10 @@ public class DeviceTradeInPage extends SharedStepsUI {
         safeClickOnElement(element);
     }
 
+    public void clickOnGray() {
+        safeClickOnElement(gray);
+    }
+
     public void clickOnContinueButton() {
         jsScrollUntilElementIsVisible(continueButton);
         safeClickOnElement(continueButton);
@@ -72,7 +79,7 @@ public class DeviceTradeInPage extends SharedStepsUI {
     }
 
     public String getTradeInDeviceHeadingText() {
-        return getTrimmedElementText(tradeInDeviceHeading);
+        return getTrimmedElementText(tradeInDeviceHeading).substring(0, 30);
     }
 
 

@@ -31,7 +31,7 @@ public class TradeInPage extends SharedStepsUI {
         clickOnGetStarted();
         clickOnNewCustomer();
 
-        return clickOnNewCustomer();
+        return new DeviceTradeInPage();
     }
 
 

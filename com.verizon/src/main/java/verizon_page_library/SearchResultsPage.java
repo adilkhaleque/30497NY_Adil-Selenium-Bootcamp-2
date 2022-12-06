@@ -177,6 +177,11 @@ public class SearchResultsPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@id='layout_container']//div[@class='newGridTileStyled__InnerDiv-bsQFXG eybXYa']//h2/a[@href]")
     public List<WebElement> watches;
 
+    @FindBy(xpath = "//div[@id='header-container']//ul//li[2]/button")
+    public WebElement appleButton;
+
+    @FindBy(xpath = "//*[@id='breadCrumb']/h1")
+    public WebElement shopTabletsHeading;
 
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
@@ -351,6 +356,14 @@ public class SearchResultsPage extends SharedStepsUI {
         }
 
         return new ItemPage();
+    }
+
+    public void clickOnAppleTabletsButton() {
+        safeClickOnElement(appleButton);
+    }
+
+    public String getShopTabletsHeadingText() {
+        return getTrimmedElementText(shopTabletsHeading);
     }
 
     public void chooseSmartphone() {
