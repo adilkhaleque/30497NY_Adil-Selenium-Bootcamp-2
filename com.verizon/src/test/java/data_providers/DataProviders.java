@@ -55,4 +55,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("WriteAReview");
     }
 
+    @DataProvider(name = "testFrench")
+    public Object[][] getFranceText() {
+        return excel.readStringArrays("Language");
+    }
+
 }
