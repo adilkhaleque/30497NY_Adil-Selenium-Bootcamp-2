@@ -45,4 +45,14 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("CompareHotspots");
     }
 
+    @DataProvider(name = "testViewSteelSeriesHeadset")
+    public Object[][] getSteelSeriesText() {
+        return excel.readStringArrays("SteelSeriesHeadset");
+    }
+
+    @DataProvider(name = "testWriteAReview")
+    public  Object[][] getReviewDetails() {
+        return excel.readStringArrays("WriteAReview");
+    }
+
 }

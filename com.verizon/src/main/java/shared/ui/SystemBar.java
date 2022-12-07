@@ -4,10 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import verizon_page_library.CompareDevicesPage;
-import verizon_page_library.SearchResultsPage;
-import verizon_page_library.ShopPage;
-import verizon_page_library.StoresPage;
+import verizon_page_library.*;
 
 public class SystemBar extends BasePage {
 
@@ -43,6 +40,12 @@ public class SystemBar extends BasePage {
 
     @FindBy(id = "gnav20-Shop-L3-11")
     public WebElement jetpacksAndHotspots;
+
+    @FindBy(id = "gnav20-Shop-L2-4")
+    public WebElement accessoriesButton;
+
+    @FindBy(id = "gnav20-Shop-L3-49")
+    public WebElement gaming;
 
     public SystemBar() {
         PageFactory.initElements(driver, this);
@@ -106,6 +109,16 @@ public class SystemBar extends BasePage {
         return new SearchResultsPage();
     }
 
+    public void clickOnAccessoriesButton() {
+        safeClickOnElement(accessoriesButton);
+    }
+
+    public GamingPage clickOnGaming() {
+        safeClickOnElement(gaming);
+
+        return new GamingPage();
+    }
+
     public SearchResultsPage doSearch(String searchTerm) {
         clickOnSearchButton();
         inputSearch(searchTerm);
@@ -153,6 +166,14 @@ public class SystemBar extends BasePage {
         clickOnJetpacksAndHotspots();
 
         return new SearchResultsPage();
+    }
+
+    public GamingPage navigateToGamingPage() {
+        clickOnShopButton();
+        clickOnAccessoriesButton();
+        clickOnGaming();
+
+        return new GamingPage();
     }
 
 }

@@ -1,5 +1,6 @@
 package verizon_page_library;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -178,7 +179,7 @@ public class SearchResultsPage extends SharedStepsUI {
     public List<WebElement> watches;
 
     @FindBy(xpath = "//div[@id='header-container']//ul//li[2]/button")
-    public WebElement appleButton;
+    public WebElement appleTabletsButton;
 
     @FindBy(xpath = "//*[@id='breadCrumb']/h1")
     public WebElement shopTabletsHeading;
@@ -197,6 +198,18 @@ public class SearchResultsPage extends SharedStepsUI {
 
     @FindBy(id = "compareButton")
     public WebElement compareButton;
+
+    @FindBy(xpath = "//div[@id='header-container']//ul//li[5]/button")
+    public WebElement steelSeriesButton;
+
+    @FindBy(xpath = "//*[@id='gridwall-wrapper']/section/div[2]/div[1]/a")
+    public WebElement steelSeriesHeadsetLink;
+
+    @FindBy(xpath = "//ul[@role='tablist']//li[3]/button")
+    public WebElement appleSmartphonesButton;
+
+    @FindBy(xpath = "//*[@id='gridwall-wrapper']/section/div[2]/div[3]/a")
+    public WebElement iPhoneLink;
 
     public SearchResultsPage() {
         PageFactory.initElements(driver, this);
@@ -298,15 +311,15 @@ public class SearchResultsPage extends SharedStepsUI {
         safeClickOnElement(wirelessChargingEssential);
     }
 
-    public void clickOnApple() {
+    public void clickOnAppleCheckbox() {
         safeClickOnElement(appleCheckbox);
     }
 
-    public void clickOnSamsung() {
+    public void clickOnSamsungCheckbox() {
         safeClickOnElement(samsungCheckbox);
     }
 
-    public void clickOnGoogle() {
+    public void clickOnGoogleCheckbox() {
         safeClickOnElement(googleCheckbox);
     }
 
@@ -374,7 +387,7 @@ public class SearchResultsPage extends SharedStepsUI {
     }
 
     public void clickOnAppleTabletsButton() {
-        safeClickOnElement(appleButton);
+        safeClickOnElement(appleTabletsButton);
     }
 
     public String getShopTabletsHeadingText() {
@@ -397,6 +410,27 @@ public class SearchResultsPage extends SharedStepsUI {
         safeClickOnElement(compareButton);
 
         return new CompareDevicesPage();
+    }
+
+    public void clickOnSteelSeries() {
+        safeClickOnElement(steelSeriesButton);
+    }
+
+    public ItemPage clickOnSteelSeriesHeadset() {
+        safeClickOnElement(steelSeriesHeadsetLink);
+
+        return new ItemPage();
+    }
+
+    public void clickOnAppleSmartphonesButton() {
+        safeClickOnElement(appleSmartphonesButton);
+    }
+
+    public ItemPage clickOnIphone() throws InterruptedException {
+        Thread.sleep(2000);
+        safeClickOnElement(iPhoneLink);
+
+        return new ItemPage();
     }
 
     public void chooseSmartphone() {
@@ -427,9 +461,9 @@ public class SearchResultsPage extends SharedStepsUI {
         clickOnWirelessChargingEssential();
         jsScrollUntilElementIsVisible(nextButton);
         clickOnNext();
-        clickOnApple();
-        clickOnSamsung();
-        clickOnGoogle();
+        clickOnAppleCheckbox();
+        clickOnSamsungCheckbox();
+        clickOnGoogleCheckbox();
         jsScrollUntilElementIsVisible(nextButton);
         clickOnNext();
         clickOnBiggerScreen();
