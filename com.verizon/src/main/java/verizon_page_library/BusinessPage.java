@@ -24,6 +24,12 @@ public class BusinessPage extends SharedStepsUI {
     @FindBy(xpath = "//ul[@class='gnav20-dropdown']//li[@class='gnav20-dropdown-list']/a[contains(text(), 'Find a Verizon Store')]")
     public WebElement findAVerizonStoreButton;
 
+    @FindBy(id = "gnav20-Contact-Us-L1")
+    public WebElement contactUsButton;
+
+    @FindBy(id = "gnav20-Contact-Us-L2-2")
+    public WebElement contactSalesButton;
+
     public  BusinessPage() {
         PageFactory.initElements(driver, this);
     }
@@ -42,6 +48,13 @@ public class BusinessPage extends SharedStepsUI {
         safeClickOnElement(findAVerizonStoreButton);
 
         return new StoreLocatorPage();
+    }
+
+    public ContactSalesPage navigateToContactSalesPage() {
+        hoverOverElement(contactUsButton);
+        safeClickOnElement(contactSalesButton);
+
+        return new ContactSalesPage();
     }
 
 }
