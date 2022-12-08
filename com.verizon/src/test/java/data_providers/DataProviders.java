@@ -60,4 +60,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("Language");
     }
 
+    @DataProvider(name = "testFindALocation")
+    public Object[][] getLocationInfo() {
+        return excel.readStringArrays("StoreLocation");
+    }
+
 }
