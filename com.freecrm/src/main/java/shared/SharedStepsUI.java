@@ -1,7 +1,7 @@
-package freecrm_page_library.shared;
+package shared;
 
 import base.BasePage;
-import freecrm_page_library.shared.ui.SystemBar;
+import shared.ui.SystemBar;
 
 public class SharedStepsUI extends BasePage {
 
