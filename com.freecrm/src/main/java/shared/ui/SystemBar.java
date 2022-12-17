@@ -1,6 +1,7 @@
 package shared.ui;
 
 import base.BasePage;
+import freecrm_page_library.CompaniesPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -48,5 +49,12 @@ public class SystemBar extends BasePage {
 
     public SystemBar() {
         PageFactory.initElements(driver, this);
+    }
+
+    public CompaniesPage navigateToCompaniesPage() {
+        hoverOverElement(companiesButton);
+        safeClickOnElement(companiesButton);
+
+        return new CompaniesPage();
     }
 }

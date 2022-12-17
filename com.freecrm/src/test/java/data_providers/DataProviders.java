@@ -9,4 +9,9 @@ public class DataProviders extends BasePage {
     public Object[][] getLoginDetails() {
         return excel.readStringArrays("Authentication");
     }
+
+    @DataProvider(name = "testCreateNewCompanyDP")
+    public Object[][] getNewCompanyInformation() {
+        return excel.readStringArrays("CreateNewCompany");
+    }
 }
