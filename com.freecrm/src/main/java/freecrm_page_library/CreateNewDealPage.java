@@ -26,6 +26,9 @@ public class CreateNewDealPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@name='company']//div[@role='option']")
     public List<WebElement> companyOptions;
 
+    @FindBy(xpath = "//div[@name='company']//div[@role='option']")
+    public WebElement companyOption;
+
     @FindBy(name = "products")
     public WebElement productsField;
 
@@ -112,7 +115,8 @@ public class CreateNewDealPage extends SharedStepsUI {
         safeClickOnElement(assignedToDropdown);
         selectOption(assignedToOptions, assignedToIndex);
         inputText(companyField, company);
-        selectOption(companyOptions, companyIndex);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='company']//div[@role='option']")));
+        safeClickOnElement(companyOption);
         inputText(contactsField, contact);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='contacts']//div[@role='option']")));
         safeClickOnElement(contactOption);
