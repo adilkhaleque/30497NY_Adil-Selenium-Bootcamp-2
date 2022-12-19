@@ -73,12 +73,6 @@ public class CreateNewContactsPage extends SharedStepsUI {
     @FindBy(xpath = "//input[@Placeholder='Home, Work, Mobile...']")
     public WebElement numberTypeField;
 
-    @FindBy(name = "identifier")
-    public WebElement identifierField;
-
-    @FindBy(xpath = "//*[@id='dashboard-toolbar']/div[1]")
-    public WebElement contactNameText;
-
     @FindBy(name = "position")
     public WebElement positionField;
 
@@ -112,8 +106,14 @@ public class CreateNewContactsPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@name='referred_by']/input")
     public WebElement referredByField;
 
+    @FindBy(name = "identifier")
+    public WebElement identifierField;
+
     @FindBy(xpath = "//button[@class='ui linkedin button' and text() = 'Save']")
     public WebElement saveButton;
+
+    @FindBy(xpath = "//*[@id='dashboard-toolbar']/div[1]")
+    public WebElement contactNameText;
 
     public CreateNewContactsPage() {
         PageFactory.initElements(driver, this);

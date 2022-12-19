@@ -19,4 +19,9 @@ public class DataProviders extends BasePage {
     public Object[][] getNewContactInformation() {
         return excel.readStringArrays("CreateNewContact");
     }
+
+    @DataProvider(name = "testCreateNewDealDP")
+    public Object[][] getNewDealInformation() {
+        return excel.readStringArrays("CreateNewDeal");
+    }
 }
