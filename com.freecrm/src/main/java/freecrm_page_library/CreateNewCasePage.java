@@ -53,10 +53,10 @@ public class CreateNewCasePage extends SharedStepsUI {
     @FindBy(xpath = "//div[@name='type']//div[@class='item']")
     public List<WebElement> typeOptions;
 
-    @FindBy(xpath = "//input[@class='calendarField react-datepicker-ignore-onclickoutside']")
+    @FindBy(xpath = "//*[@id='main-content']/div/div[2]/form/div[4]/div[2]/div/div/div/input")
     public WebElement deadlineField;
 
-    @FindBy(className = "calendarField")
+    @FindBy(xpath = "//*[@id='main-content']/div/div[2]/form/div[5]/div[1]/div/div/div/input")
     public WebElement closeDateField;
 
     @FindBy(xpath = "//button[@type='button' and text() = 'Next Month']")
@@ -105,7 +105,7 @@ public class CreateNewCasePage extends SharedStepsUI {
         safeClickOnElement(assignedToDropdown);
         selectOption(assignedToOptions, assignedToIndex);
         inputText(contactsField, contact);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='contacts']//div[@role='option']")));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='contact']//div[@role='option']")));
         safeClickOnElement(contactOption);
         inputText(companyField, company);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='company']//div[@role='option']")));
