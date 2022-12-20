@@ -85,4 +85,12 @@ public class SystemBar extends BasePage {
 
         return new CasesPage();
     }
+
+    public CallsPage navigateToCallsPage() {
+        hoverOverElement(callsButton);
+        safeClickOnElement(callsButton);
+
+        return new CallsPage();
+    }
+
 }

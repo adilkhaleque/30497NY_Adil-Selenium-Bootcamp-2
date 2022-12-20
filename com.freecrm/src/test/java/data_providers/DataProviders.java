@@ -35,4 +35,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("CreateNewTask");
     }
 
+    @DataProvider(name = "testCreateNewCallDP")
+    public Object[][] getNewCallInformation() {
+        return excel.readStringArrays("CreateNewCall");
+    }
+
 }
