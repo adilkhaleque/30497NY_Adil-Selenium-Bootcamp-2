@@ -110,7 +110,7 @@ public class CreateNewCasePage extends SharedStepsUI {
         inputText(companyField, company);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='company']//div[@role='option']")));
         safeClickOnElement(companyOption);
-        inputText(dealField, company);
+        inputText(dealField, deal);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='deal']//div[@role='option']")));
         safeClickOnElement(dealOption);
         safeClickOnElement(typeDropdown);
