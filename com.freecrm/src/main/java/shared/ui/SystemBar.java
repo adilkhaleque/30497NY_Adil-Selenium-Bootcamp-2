@@ -1,9 +1,7 @@
 package shared.ui;
 
 import base.BasePage;
-import freecrm_page_library.CompaniesPage;
-import freecrm_page_library.ContactsPage;
-import freecrm_page_library.DealsPage;
+import freecrm_page_library.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -72,5 +70,19 @@ public class SystemBar extends BasePage {
         safeClickOnElement(dealsButton);
 
         return new DealsPage();
+    }
+
+    public TasksPage navigateToTasksPage() {
+        hoverOverElement(tasksButton);
+        safeClickOnElement(tasksButton);
+
+        return new TasksPage();
+    }
+
+    public CasesPage navigateToCasesPage() {
+        hoverOverElement(casesButton);
+        safeClickOnElement(casesButton);
+
+        return new CasesPage();
     }
 }

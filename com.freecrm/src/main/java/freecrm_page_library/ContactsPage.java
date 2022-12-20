@@ -28,9 +28,9 @@ public class ContactsPage extends SharedStepsUI {
         safeClickOnElement(exportButton);
     }
 
-    public CreateNewContactsPage clickOnCreateNewContactsPage() {
+    public CreateNewContactPage clickOnCreateNewContactsPage() {
         safeClickOnElement(createNewContactsButton);
 
-        return new CreateNewContactsPage();
+        return new CreateNewContactPage();
     }
 }

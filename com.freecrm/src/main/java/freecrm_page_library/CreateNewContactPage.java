@@ -3,12 +3,11 @@ package freecrm_page_library;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import shared.SharedStepsUI;
 
 import java.util.List;
 
-public class CreateNewContactsPage extends SharedStepsUI {
+public class CreateNewContactPage extends SharedStepsUI {
 
     @FindBy(name = "first_name")
     public WebElement firstNameField;
@@ -115,7 +114,7 @@ public class CreateNewContactsPage extends SharedStepsUI {
     @FindBy(xpath = "//*[@id='dashboard-toolbar']/div[1]")
     public WebElement contactNameText;
 
-    public CreateNewContactsPage() {
+    public CreateNewContactPage() {
         PageFactory.initElements(driver, this);
     }
 

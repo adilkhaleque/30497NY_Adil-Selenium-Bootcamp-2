@@ -16,9 +16,9 @@ public class TestContacts extends BasePage {
         AuthenticationPage authenticationPage = initialPage.clickOnLoginButton();
         HomePage homePage = authenticationPage.doSignIn(userEmail, password);
         ContactsPage contactsPage = homePage.systemBar.navigateToContactsPage();
-        CreateNewContactsPage createNewContactsPage = contactsPage.clickOnCreateNewContactsPage();
-        createNewContactsPage.createNewContact(firstName, lastName, company, email, emailType, Integer.parseInt(categoryIndex), Integer.parseInt(statusIndex), description, Integer.parseInt(timezoneIndex), address, city, state, zip, number, numberType, position, department, Integer.parseInt(sourceIndex), day, Integer.parseInt(monthIndex), year);
+        CreateNewContactPage createNewContactPage = contactsPage.clickOnCreateNewContactsPage();
+        createNewContactPage.createNewContact(firstName, lastName, company, email, emailType, Integer.parseInt(categoryIndex), Integer.parseInt(statusIndex), description, Integer.parseInt(timezoneIndex), address, city, state, zip, number, numberType, position, department, Integer.parseInt(sourceIndex), day, Integer.parseInt(monthIndex), year);
 
-        Assert.assertEquals(createNewContactsPage.getContactNameText(), text);
+        Assert.assertEquals(createNewContactPage.getContactNameText(), text);
     }
 }
