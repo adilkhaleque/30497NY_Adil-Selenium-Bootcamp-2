@@ -13,10 +13,16 @@ public class TasksPage extends SharedStepsUI {
     @FindBy(xpath = "//button[@class='ui linkedin button' and text() = 'Export']")
     public WebElement exportButton;
 
-    @FindBy(xpath = "//a[@href='/deals/new']")
-    public WebElement createNewDealsButton;
+    @FindBy(xpath = "//a[@href='/tasks/new']")
+    public WebElement createNewTasksButton;
 
     public TasksPage() {
         PageFactory.initElements(driver, this);
+    }
+
+    public CreateNewTaskPage clickOnCreateNewTaskButton() {
+        safeClickOnElement(createNewTasksButton);
+
+        return new CreateNewTaskPage();
     }
 }

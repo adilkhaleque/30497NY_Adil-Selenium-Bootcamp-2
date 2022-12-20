@@ -1,8 +1,10 @@
 package freecrm_page_library;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import shared.SharedStepsUI;
 
 import java.util.List;
@@ -24,10 +26,10 @@ public class CreateNewTaskPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@name='type']//div[@class='item']")
     public List<WebElement> typeOptions;
 
-    @FindBy(xpath = "//input[@class='calendarField react-datepicker-ignore-onclickoutside']")
+    @FindBy(xpath = "//*[@id='main-content']/div/div[2]/form/div[3]/div[1]/div/div/div/input")
     public WebElement dueDateField;
 
-    @FindBy(className = "calendarField")
+    @FindBy(xpath = "//*[@id='main-content']/div/div[2]/form/div[5]/div[1]/div/div/div/input")
     public WebElement closeDateField;
 
     @FindBy(xpath = "//button[@type='button' and text() = 'Next Month']")
@@ -90,7 +92,58 @@ public class CreateNewTaskPage extends SharedStepsUI {
     @FindBy(name = "identifier")
     public WebElement identifierField;
 
+    @FindBy(xpath = "//button[@class='ui linkedin button' and text() = 'Save']")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "//div[@class='custom-view-container']//div[@class='ui form segment']//div[@class='field'][1]//span/p")
+    public WebElement taskTitleText;
+
     public CreateNewTaskPage() {
         PageFactory.initElements(driver, this);
+    }
+
+    public void fillOutCreateNewTaskForm(String title, int assignedToIndex, int typeIndex, String dueDate, String contact, String deal,
+                                  String caseName, String closeDate, String description, String completion, int priorityIndex,
+                                  int statusIndex) {
+
+        inputText(titleField, title);
+        safeClickOnElement(assignedToDropdown);
+        selectOption(assignedToOptions, assignedToIndex);
+        safeClickOnElement(typeDropdown);
+        selectOption(typeOptions, typeIndex);
+        inputText(dueDateField, dueDate);
+        inputText(contactsField, contact);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='contact']//div[@role='option']")));
+        safeClickOnElement(contactOption);
+        inputText(dealField, deal);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='deal']//div[@role='option']")));
+        safeClickOnElement(dealOption);
+        inputText(caseField, caseName);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='case']//div[@role='option']")));
+        safeClickOnElement(caseOption);
+        inputText(closeDateField, closeDate);
+        inputText(descriptionField, description);
+        inputText(completionField, completion);
+        safeClickOnElement(priorityDropdown);
+        selectOption(priorityOptions, priorityIndex);
+        safeClickOnElement(statusDropdown);
+        selectOption(statusOptions, statusIndex);
+
+    }
+
+    public void clickOnSaveButton() {
+        safeClickOnElement(saveButton);
+    }
+
+    public void createNewTask(String title, int assignedToIndex, int typeIndex, String dueDate, String contact, String deal,
+                              String caseName, String closeDate, String description, String completion, int priorityIndex,
+                              int statusIndex) {
+
+        fillOutCreateNewTaskForm(title, assignedToIndex, typeIndex, dueDate, contact, deal, caseName, closeDate, description, completion, priorityIndex, statusIndex);
+        clickOnSaveButton();
+    }
+
+    public String getTaskTitleText() {
+        return getTrimmedElementText(taskTitleText);
     }
 }

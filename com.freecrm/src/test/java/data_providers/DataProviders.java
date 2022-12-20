@@ -30,4 +30,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("CreateNewCase");
     }
 
+    @DataProvider(name = "testCreateNewTaskDP")
+    public Object[][] getNewTaskInformation() {
+        return excel.readStringArrays("CreateNewTask");
+    }
+
 }
