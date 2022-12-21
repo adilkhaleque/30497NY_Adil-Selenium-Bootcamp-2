@@ -93,4 +93,11 @@ public class SystemBar extends BasePage {
         return new CallsPage();
     }
 
+    public DocumentsPage navigateToDocumentsPage() {
+        hoverOverElement(documentsButton);
+        safeClickOnElement(documentsButton);
+
+        return new DocumentsPage();
+    }
+
 }
