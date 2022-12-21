@@ -106,4 +106,11 @@ public class SystemBar extends BasePage {
 
         return new CampaignsPage();
     }
+
+    public CalendarPage navigateToCalendarPage() {
+        hoverOverElement(calendarButton);
+        safeClickOnElement(calendarButton);
+
+        return new CalendarPage();
+    }
 }
