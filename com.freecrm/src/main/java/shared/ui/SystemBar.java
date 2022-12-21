@@ -100,4 +100,10 @@ public class SystemBar extends BasePage {
         return new DocumentsPage();
     }
 
+    public CampaignsPage navigateToCampaignsPage() {
+        hoverOverElement(campaignsButton);
+        safeClickOnElement(campaignsButton);
+
+        return new CampaignsPage();
+    }
 }
