@@ -14,4 +14,9 @@ public class DataProviders extends BasePage {
     public Object[][] getSearchInfo() {
         return excel.readStringArrays("Search");
     }
+
+    @DataProvider(name = "testViewProduct")
+    public Object[][] getProductInfo() {
+        return excel.readStringArrays("ViewProduct");
+    }
 }
