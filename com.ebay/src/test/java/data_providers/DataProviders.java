@@ -40,4 +40,14 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("ShopForRugs");
     }
 
+    @DataProvider(name = "testShopForBoots")
+    public Object[][] getBootsType() {
+        return excel.readStringArrays("ShopForBoots");
+    }
+
+    @DataProvider(name = "testShopForCardGames")
+    public Object[][] getGamesType() {
+        return excel.readStringArrays("ShopForCardGames");
+    }
+
 }

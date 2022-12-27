@@ -61,5 +61,25 @@ public class TestShopping extends BasePage {
         Assert.assertEquals(traditionalAreaRugs.getRugsText(), text);
     }
 
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testShopForBoots")
+    public void testShopForBoots(String shoesIndex, String text) {
+
+        HomePage homePage = new HomePage();
+        MensShoesPage mensShoesPage = homePage.selectClothingAndAccessoriesCategory(homePage.clothingAndAccessoriesCategories, Integer.parseInt(shoesIndex));
+        MensBootsPage mensBootsPage = mensShoesPage.clickOnBootsCategory();
+        TimberlandMensBootsPage timberlandMensBootsPage = mensBootsPage.clickOnTimberlandBrand();
+
+        Assert.assertEquals(timberlandMensBootsPage.getTimberlandMensBootsHeadingText(), text);
+    }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testShopForCardGames")
+    public void testShopForCardGames(String toyIndex, String text) {
+
+        HomePage homePage = new HomePage();
+        GamesPage gamesPage = homePage.selectToysCategory(homePage.toysCategories, Integer.parseInt(toyIndex));
+        CardGamesAndPokerCardsPage cardGamesAndPokerCardsPage = gamesPage.clickOnCardGamesLink();
+
+        Assert.assertEquals(cardGamesAndPokerCardsPage.getCardGamesHeadingText(), text);
+    }
 
 }

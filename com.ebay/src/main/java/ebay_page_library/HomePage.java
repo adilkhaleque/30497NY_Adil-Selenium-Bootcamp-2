@@ -185,4 +185,28 @@ public class HomePage extends SharedStepsUI {
         return new HomeDecorPage();
     }
 
+    public MensShoesPage selectClothingAndAccessoriesCategory(List<WebElement> elements, int optionIndex) {
+        try {
+            hoverOverElement(clothingAndAccessoriesTab);
+            safeClickOnElement(elements.get(optionIndex));
+        } catch (IndexOutOfBoundsException e) {
+            hoverOverElement(clothingAndAccessoriesTab);
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+
+        return new MensShoesPage();
+    }
+
+    public GamesPage selectToysCategory(List<WebElement> elements, int optionIndex) {
+        try {
+            hoverOverElement(toysTab);
+            safeClickOnElement(elements.get(optionIndex));
+        } catch (IndexOutOfBoundsException e) {
+            hoverOverElement(toysTab);
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+
+        return new GamesPage();
+    }
+
 }
