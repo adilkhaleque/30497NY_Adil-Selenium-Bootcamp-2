@@ -82,4 +82,14 @@ public class TestShopping extends BasePage {
         Assert.assertEquals(cardGamesAndPokerCardsPage.getCardGamesHeadingText(), text);
     }
 
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testShopForOptics")
+    public void testShopForOptics(String huntingIndex, String text) {
+
+        HomePage homePage = new HomePage();
+        HuntingGearPage huntingGearPage = homePage.selectSportingGoodsCategory(homePage.sportingGoodsCategories, Integer.parseInt(huntingIndex));
+        OpticsPage opticsPage = huntingGearPage.clickOnOpticsLink();
+
+        Assert.assertEquals(opticsPage.getOpticsHeadingText(), text);
+    }
+
 }

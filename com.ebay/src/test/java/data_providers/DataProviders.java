@@ -50,4 +50,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("ShopForCardGames");
     }
 
+    @DataProvider(name = "testShopForOptics")
+    public Object[][] getGearType() {
+        return excel.readStringArrays("ShopForOptics");
+    }
+
 }

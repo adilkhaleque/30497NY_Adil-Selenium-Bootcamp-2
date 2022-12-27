@@ -209,4 +209,16 @@ public class HomePage extends SharedStepsUI {
         return new GamesPage();
     }
 
+    public HuntingGearPage selectSportingGoodsCategory(List<WebElement> elements, int optionIndex) {
+        try {
+            hoverOverElement(sportingGoodsTab);
+            safeClickOnElement(elements.get(optionIndex));
+        } catch (IndexOutOfBoundsException e) {
+            hoverOverElement(sportingGoodsTab);
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+
+        return new HuntingGearPage();
+    }
+
 }
