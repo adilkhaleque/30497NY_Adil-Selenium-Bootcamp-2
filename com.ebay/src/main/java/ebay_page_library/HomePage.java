@@ -161,4 +161,16 @@ public class HomePage extends SharedStepsUI {
         return new CarsAndTrucksPage();
     }
 
+    public PaintingsPage selectCollectiblesAndArtCategory(List<WebElement> elements, int optionIndex) {
+        try {
+            hoverOverElement(collectiblesAndArtTab);
+            safeClickOnElement(elements.get(optionIndex));
+        } catch (IndexOutOfBoundsException e) {
+            hoverOverElement(collectiblesAndArtTab);
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+
+        return new PaintingsPage();
+    }
+
 }

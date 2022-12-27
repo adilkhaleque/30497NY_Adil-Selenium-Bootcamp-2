@@ -37,4 +37,14 @@ public class TestShopping extends BasePage {
 
         Assert.assertEquals(searchResultsPage.getResultsText(), text);
     }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testShopForArtPaintings")
+    public void testShopForPaintings(String artIndex, String text) {
+
+        HomePage homePage = new HomePage();
+        PaintingsPage paintingsPage = homePage.selectCollectiblesAndArtCategory(homePage.collectiblesAndArtCategories, Integer.parseInt(artIndex));
+        WatercolorArtPaintingsPage watercolorArtPaintingsPage = paintingsPage.clickOnWatercolorMedium();
+
+        Assert.assertEquals(watercolorArtPaintingsPage.getWatercolorArtPaintingsHeadingText(), text);
+    }
 }

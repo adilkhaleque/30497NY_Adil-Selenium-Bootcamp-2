@@ -30,4 +30,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("ShopForChargers");
     }
 
+    @DataProvider(name = "testShopForArtPaintings")
+    public Object[][] getPaintingType() {
+        return excel.readStringArrays("ShopForPaintings");
+    }
+
 }
