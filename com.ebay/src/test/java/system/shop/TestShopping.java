@@ -1,9 +1,8 @@
 package system.shop;
 
 import base.BasePage;
-import ebay_page_library.CategoryPage;
-import ebay_page_library.ElectronicsPage;
-import ebay_page_library.HomePage;
+import data_providers.DataProviders;
+import ebay_page_library.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,14 +13,28 @@ public class TestShopping extends BasePage {
 
         HomePage homePage = new HomePage();
         ElectronicsPage electronicsPage = homePage.clickOnElectronicsTab();
-        CategoryPage categoryPage = electronicsPage.clickOnCamerasAndPhotoCategory();
-        categoryPage.clickOnDSLRCameras();
-        jsScrollUntilElementIsVisible(categoryPage.brandDropdown);
-        categoryPage.clickOnBrandDropdown();
-        selectOption(categoryPage.brands, Integer.parseInt(brand));
-        categoryPage.clickOnPriceDropdown();
-        selectOption(categoryPage.prices, Integer.parseInt(price));
+        CamerasAndPhotoPage camerasAndPhotoPage = electronicsPage.clickOnCamerasAndPhotoCategory();
+        DSLRCamerasPage dslrCamerasPage = camerasAndPhotoPage.clickOnDSLRCameras();
+        jsScrollUntilElementIsVisible(dslrCamerasPage.brandDropdown);
+        dslrCamerasPage.clickOnBrandDropdown();
+        selectOption(dslrCamerasPage.brands, Integer.parseInt(brand));
+        dslrCamerasPage.clickOnPriceDropdown();
+        selectOption(dslrCamerasPage.prices, Integer.parseInt(price));
 
-        Assert.assertEquals(categoryPage.getDSLRCamerasHeaderText(), text);
+        Assert.assertEquals(dslrCamerasPage.getDSLRCamerasHeaderText(), text);
+    }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testShopForCarsAndTrucks")
+    public void testShopForCars(String motorsIndex, String make, String model, String text) {
+
+        HomePage homePage = new HomePage();
+        CarsAndTrucksPage carsAndTrucksPage = homePage.selectMotorsCategory(homePage.motorsCategories, Integer.parseInt(motorsIndex));
+        carsAndTrucksPage.clickOnAllMakesDropdown();
+        selectFromDropdownByValue(carsAndTrucksPage.allMakesDropdown, make);
+        carsAndTrucksPage.clickOnAllModelsDropdown();
+        selectFromDropdownByValue(carsAndTrucksPage.allModelsDropdown, model);
+        SearchResultsPage searchResultsPage = carsAndTrucksPage.clickOnFindAVehicleButton();
+
+        Assert.assertEquals(searchResultsPage.getResultsText(), text);
     }
 }

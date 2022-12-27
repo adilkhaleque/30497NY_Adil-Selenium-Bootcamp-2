@@ -7,10 +7,7 @@ import shared.SharedStepsUI;
 
 import java.util.List;
 
-public class CategoryPage extends SharedStepsUI {
-
-    @FindBy(xpath = "//*[@id='mainContent']/section[@class='b-module b-visualnav']/div[@class='b-visualnav__grid']//a[1]")
-    public WebElement dSLRCamerasLink;
+public class DSLRCamerasPage extends SharedStepsUI {
 
     @FindBy(xpath = "//ul[@class='brm__list']//li[@class='brm__item'][3]/div/button")
     public WebElement brandDropdown;
@@ -27,12 +24,8 @@ public class CategoryPage extends SharedStepsUI {
     @FindBy(xpath = "//div[@class='pagecontainer__top']//h1[@class='b-pageheader']/span")
     public WebElement dSLRCamerasHeader;
 
-    public CategoryPage() {
+    public DSLRCamerasPage() {
         PageFactory.initElements(driver, this);
-    }
-
-    public void clickOnDSLRCameras() {
-        safeClickOnElement(dSLRCamerasLink);
     }
 
     public void clickOnBrandDropdown() {

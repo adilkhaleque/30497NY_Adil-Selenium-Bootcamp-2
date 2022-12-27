@@ -25,4 +25,9 @@ public class DataProviders extends BasePage {
         return excel.readStringArrays("ShopForDSLRs");
     }
 
+    @DataProvider(name = "testShopForCarsAndTrucks")
+    public Object[][] getCarDetails() {
+        return excel.readStringArrays("ShopForChargers");
+    }
+
 }

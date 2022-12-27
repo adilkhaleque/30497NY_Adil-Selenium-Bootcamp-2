@@ -14,9 +14,9 @@ public class ElectronicsPage extends SharedStepsUI {
         PageFactory.initElements(driver, this);
     }
 
-    public CategoryPage clickOnCamerasAndPhotoCategory() {
+    public CamerasAndPhotoPage clickOnCamerasAndPhotoCategory() {
         safeClickOnElement(camerasAndPhotoCategory);
 
-        return new CategoryPage();
+        return new CamerasAndPhotoPage();
     }
 }
