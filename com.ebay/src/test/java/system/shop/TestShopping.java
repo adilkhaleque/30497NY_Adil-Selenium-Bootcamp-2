@@ -47,4 +47,19 @@ public class TestShopping extends BasePage {
 
         Assert.assertEquals(watercolorArtPaintingsPage.getWatercolorArtPaintingsHeadingText(), text);
     }
+
+    @Test(dataProviderClass = data_providers.DataProviders.class, dataProvider = "testShopForRugs")
+    public void testShopForRugs(String decorIndex, String text) {
+
+        HomePage homePage = new HomePage();
+        HomeDecorPage homeDecorPage = homePage.selectHomeAndGardenCategory(homePage.homeAndGardensCategories, Integer.parseInt(decorIndex));
+        RugsAndCarpetsPage rugsAndCarpetsPage = homeDecorPage.clickOnRugsCategory();
+        AreaRugsPage areaRugsPage = rugsAndCarpetsPage.clickOnAreaRugsCategory();
+        TraditionalAreaRugs traditionalAreaRugs = areaRugsPage.clickOnTraditionalStyle();
+
+
+        Assert.assertEquals(traditionalAreaRugs.getRugsText(), text);
+    }
+
+
 }

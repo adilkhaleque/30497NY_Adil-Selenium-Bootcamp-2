@@ -173,4 +173,16 @@ public class HomePage extends SharedStepsUI {
         return new PaintingsPage();
     }
 
+    public HomeDecorPage selectHomeAndGardenCategory(List<WebElement> elements, int optionIndex) {
+        try {
+            hoverOverElement(homeAndGardenTab);
+            safeClickOnElement(elements.get(optionIndex));
+        } catch (IndexOutOfBoundsException e) {
+            hoverOverElement(homeAndGardenTab);
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+
+        return new HomeDecorPage();
+    }
+
 }
