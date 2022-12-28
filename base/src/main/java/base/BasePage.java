@@ -88,8 +88,8 @@ public class BasePage {
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
 
-
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://espn.com") String url) {
+
 
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
@@ -339,7 +339,7 @@ public class BasePage {
             driver = new SafariDriver();
         }
 
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofMillis(500))
@@ -395,7 +395,6 @@ public class BasePage {
         }
         return false;
     }
-
 
     public void selectOption(List<WebElement> elements, int optionIndex) {
         try {
