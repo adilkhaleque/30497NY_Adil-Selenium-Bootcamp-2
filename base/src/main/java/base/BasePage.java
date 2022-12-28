@@ -374,11 +374,19 @@ public class BasePage {
     }
     // endregion
 
-    public boolean areEqualLists (List<WebElement> elements, List<Object> data) {
+    public boolean areEqualLists(List<WebElement> elements, List<Object> data) {
         if (elements.equals(data)) {
             return true;
         }
         return false;
+    }
+
+    public void selectOption(List<WebElement> elements, int optionIndex) {
+        try {
+            safeClickOnElement(elements.get(optionIndex));
+        } catch (IndexOutOfBoundsException e) {
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
     }
 
 }
