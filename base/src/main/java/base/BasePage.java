@@ -37,7 +37,11 @@ public class BasePage {
 
     Map<Object, String> dbConfig = BaseConfig.databaseConfig();
     public static final String DATA_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator
+<<<<<<< HEAD
             + "test" + File.separator + "resources" + File.separator + "test_data1.xlsx";
+=======
+            + "test" + File.separator + "resources" + File.separator + "test_data_1.xlsx";
+>>>>>>> master
     public static ExcelData excel;
     public static Database db;
     public static WebDriver driver;
@@ -85,7 +89,7 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://espn.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://espn.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -252,6 +256,7 @@ public class BasePage {
         }
     }
 
+
     // region JavaScriptExecutor Methods
     // TODO - Unit test and refactor as needed
     public String jsGetTrimmedElementText(WebElement element) {
@@ -305,6 +310,15 @@ public class BasePage {
         } catch (AWTException e) {
             e.printStackTrace();
         }
+    }
+
+    public void moveSlider(WebElement initialPos, WebElement endPos) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(initialPos)
+                .click()
+                .dragAndDrop(initialPos, endPos)
+                .build()
+                .perform();
     }
 
     // endregion
@@ -389,4 +403,16 @@ public class BasePage {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+    public void selectItem(int itemIndex, List<WebElement> elements) {
+        try {
+            clickOnElement(elements.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(elements.get(elements.size() - 1));
+        }
+    }
+
+}
+>>>>>>> master
