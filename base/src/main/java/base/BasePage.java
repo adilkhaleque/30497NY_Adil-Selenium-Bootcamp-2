@@ -37,7 +37,9 @@ public class BasePage {
 
     Map<Object, String> dbConfig = BaseConfig.databaseConfig();
     public static final String DATA_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator
-            + "test" + File.separator + "resources" + File.separator + "test_data_verizon.xlsx";
+
+            + "test" + File.separator + "resources" + File.separator + "test_data1.xlsx";
+
     public static ExcelData excel;
     public static Database db;
     public static WebDriver driver;
@@ -85,7 +87,10 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.verizon.com/") String url) {
+
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://espn.com") String url) {
+
+
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -252,6 +257,7 @@ public class BasePage {
         }
     }
 
+
     // region JavaScriptExecutor Methods
     // TODO - Unit test and refactor as needed
     public String jsGetTrimmedElementText(WebElement element) {
@@ -315,7 +321,6 @@ public class BasePage {
                 .build()
                 .perform();
     }
-
 
     // endregion
 
@@ -384,12 +389,22 @@ public class BasePage {
     }
     // endregion
 
-    public boolean areEqualLists (List<WebElement> elements, List<Object> data) {
+    public boolean areEqualLists(List<WebElement> elements, List<Object> data) {
         if (elements.equals(data)) {
             return true;
         }
         return false;
     }
+
+    public void selectOption(List<WebElement> elements, int optionIndex) {
+        try {
+            safeClickOnElement(elements.get(optionIndex));
+
+        } catch (IndexOutOfBoundsException e) {
+            safeClickOnElement(elements.get(elements.size() - 1));
+        }
+    }
+
 
     public void selectItem(int itemIndex, List<WebElement> elements) {
         try {
@@ -400,3 +415,4 @@ public class BasePage {
     }
 
 }
+
