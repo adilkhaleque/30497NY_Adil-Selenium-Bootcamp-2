@@ -9,4 +9,10 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://verizon.com"/>
 
+    <test name="smoke">
+        <classes>
+            <class name="system.shop_devices.TestViewDevices"/>
+        </classes>
+    </test>
+
 </suite>

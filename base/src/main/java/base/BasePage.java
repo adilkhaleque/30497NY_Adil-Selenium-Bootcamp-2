@@ -37,7 +37,13 @@ public class BasePage {
 
     Map<Object, String> dbConfig = BaseConfig.databaseConfig();
     public static final String DATA_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator
+<<<<<<< HEAD
             + "test" + File.separator + "resources" + File.separator + "test_data_freecrm.xlsx";
+=======
+
+            + "test" + File.separator + "resources" + File.separator + "test_data1.xlsx";
+
+>>>>>>> master
     public static ExcelData excel;
     public static Database db;
     public static WebDriver driver;
@@ -85,7 +91,14 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
+<<<<<<< HEAD
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://freecrm.com/") String url) {
+=======
+
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://espn.com") String url) {
+
+
+>>>>>>> master
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -252,6 +265,7 @@ public class BasePage {
         }
     }
 
+
     // region JavaScriptExecutor Methods
     // TODO - Unit test and refactor as needed
     public String jsGetTrimmedElementText(WebElement element) {
@@ -307,6 +321,15 @@ public class BasePage {
         }
     }
 
+    public void moveSlider(WebElement initialPos, WebElement endPos) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(initialPos)
+                .click()
+                .dragAndDrop(initialPos, endPos)
+                .build()
+                .perform();
+    }
+
     // endregion
 
     // endregion
@@ -324,7 +347,7 @@ public class BasePage {
             driver = new SafariDriver();
         }
 
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofMillis(500))
@@ -374,7 +397,7 @@ public class BasePage {
     }
     // endregion
 
-    public boolean areEqualLists (List<WebElement> elements, List<Object> data) {
+    public boolean areEqualLists(List<WebElement> elements, List<Object> data) {
         if (elements.equals(data)) {
             return true;
         }
@@ -384,13 +407,28 @@ public class BasePage {
     public void selectOption(List<WebElement> elements, int optionIndex) {
         try {
             safeClickOnElement(elements.get(optionIndex));
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         } catch (IndexOutOfBoundsException e) {
             safeClickOnElement(elements.get(elements.size() - 1));
         }
     }
 
+<<<<<<< HEAD
     public void inputText(WebElement element, String text) {
         sendKeysToElement(element, text);
+=======
+
+    public void selectItem(int itemIndex, List<WebElement> elements) {
+        try {
+            clickOnElement(elements.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(elements.get(elements.size() - 1));
+        }
+>>>>>>> master
     }
 
 }
+

@@ -9,4 +9,18 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.apartments.com"/>
 
+    <test name="smoke">
+        <classes>
+            <class name="system.searching.TestSearching"/>
+            <class name="system.add_favorites.TestFavorites"/>
+            <class name="system.reviews.TestWriteReview"/>
+            <class name="system.renter_tools.TestRentCalculator"/>
+            <class name="system.authentication.TestAuthentication"/>
+            <class name="system.change_language.TestChangeLanguage"/>
+            <class name="system.homes_for_rent.TestFindHomesForRent"/>
+            <class name="system.nearby_spots.TestViewNearbySpots"/>
+            <class name="system.saved_search.TestSaveASearch"/>
+        </classes>
+    </test>
+
 </suite>
