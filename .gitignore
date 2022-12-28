@@ -5,6 +5,7 @@
 *target
 reports
 .DS_Store
+
 # Compiled class file
 *.class
 

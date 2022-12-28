@@ -37,7 +37,9 @@ public class BasePage {
 
     Map<Object, String> dbConfig = BaseConfig.databaseConfig();
     public static final String DATA_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator
-            + "test" + File.separator + "resources" + File.separator + "test_data_1.xlsx";
+
+            + "test" + File.separator + "resources" + File.separator + "test_data1.xlsx";
+
     public static ExcelData excel;
     public static Database db;
     public static WebDriver driver;
@@ -384,7 +386,7 @@ public class BasePage {
     }
     // endregion
 
-    public boolean areEqualLists (List<WebElement> elements, List<Object> data) {
+    public boolean areEqualLists(List<WebElement> elements, List<Object> data) {
         if (elements.equals(data)) {
             return true;
         }
@@ -399,6 +401,7 @@ public class BasePage {
         }
     }
 
+
     public void selectItem(int itemIndex, List<WebElement> elements) {
         try {
             clickOnElement(elements.get(itemIndex));
@@ -408,3 +411,4 @@ public class BasePage {
     }
 
 }
+
