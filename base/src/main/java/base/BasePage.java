@@ -37,11 +37,9 @@ public class BasePage {
 
     Map<Object, String> dbConfig = BaseConfig.databaseConfig();
     public static final String DATA_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator
-<<<<<<< HEAD
+
             + "test" + File.separator + "resources" + File.separator + "test_data1.xlsx";
-=======
-            + "test" + File.separator + "resources" + File.separator + "test_data_1.xlsx";
->>>>>>> master
+
     public static ExcelData excel;
     public static Database db;
     public static WebDriver driver;
@@ -403,9 +401,7 @@ public class BasePage {
         }
     }
 
-<<<<<<< HEAD
-}
-=======
+
     public void selectItem(int itemIndex, List<WebElement> elements) {
         try {
             clickOnElement(elements.get(itemIndex));
@@ -415,4 +411,4 @@ public class BasePage {
     }
 
 }
->>>>>>> master
+
