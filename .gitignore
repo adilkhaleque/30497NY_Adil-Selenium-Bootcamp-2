@@ -5,6 +5,10 @@
 *target
 reports
 .DS_Store
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 # Compiled class file
 *.class
 
