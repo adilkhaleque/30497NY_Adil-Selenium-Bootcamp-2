@@ -308,6 +308,15 @@ public class BasePage {
         }
     }
 
+    public void moveSlider(WebElement initialPos, WebElement endPos) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(initialPos)
+                .click()
+                .dragAndDrop(initialPos, endPos)
+                .build()
+                .perform();
+    }
+
     // endregion
 
     // endregion
@@ -387,6 +396,14 @@ public class BasePage {
             safeClickOnElement(elements.get(optionIndex));
         } catch (IndexOutOfBoundsException e) {
             safeClickOnElement(elements.get(elements.size() - 1));
+        }
+    }
+
+    public void selectItem(int itemIndex, List<WebElement> elements) {
+        try {
+            clickOnElement(elements.get(itemIndex));
+        } catch (IndexOutOfBoundsException e) {
+            clickOnElement(elements.get(elements.size() - 1));
         }
     }
 
