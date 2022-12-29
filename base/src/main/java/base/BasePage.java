@@ -37,9 +37,13 @@ public class BasePage {
 
     Map<Object, String> dbConfig = BaseConfig.databaseConfig();
     public static final String DATA_PATH = System.getProperty("user.dir") + File.separator + "src" + File.separator
+<<<<<<< HEAD
+            + "test" + File.separator + "resources" + File.separator + "test_data_ebay.xlsx";
+=======
 
             + "test" + File.separator + "resources" + File.separator + "test_data1.xlsx";
 
+>>>>>>> master
     public static ExcelData excel;
     public static Database db;
     public static WebDriver driver;
@@ -87,10 +91,14 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
+<<<<<<< HEAD
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://ebay.com") String url) {
+=======
 
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://espn.com") String url) {
 
 
+>>>>>>> master
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -404,6 +412,8 @@ public class BasePage {
         }
     }
 
+<<<<<<< HEAD
+=======
     public void inputText(WebElement element, String text) {
         sendKeysToElement(element, text);
     }
@@ -416,5 +426,6 @@ public class BasePage {
         }
     }
 
+>>>>>>> master
 }
 
