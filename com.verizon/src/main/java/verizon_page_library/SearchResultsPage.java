@@ -1,6 +1,5 @@
 package verizon_page_library;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -451,20 +450,20 @@ public class SearchResultsPage extends SharedStepsUI {
         clickOnStreamingSports();
         clickOnMapsAndGps();
         clickOnOrganizingMyLife();
-        jsScrollUntilElementIsVisible(nextButton);
+        jsScrollElementIntoView(nextButton);
         clickOnNext();
         clickOnCameraQualityEssential();
         clickOnBatteryLifeEssential();
-        jsScrollUntilElementIsVisible(screenQualityHeading);
+        jsScrollElementIntoView(screenQualityHeading);
         clickOnScreenQualityEssential();
         clickOnWaterResistanceEssential();
         clickOnWirelessChargingEssential();
-        jsScrollUntilElementIsVisible(nextButton);
+        jsScrollElementIntoView(nextButton);
         clickOnNext();
         clickOnAppleCheckbox();
         clickOnSamsungCheckbox();
         clickOnGoogleCheckbox();
-        jsScrollUntilElementIsVisible(nextButton);
+        jsScrollElementIntoView(nextButton);
         clickOnNext();
         clickOnBiggerScreen();
         clickOnNext();

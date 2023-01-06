@@ -29,7 +29,7 @@ public class StoresPage extends SharedStepsUI {
     }
 
     public TradeInPage navigateToTradeInPage() {
-        jsScrollUntilElementIsVisible(deviceSetupDropdown);
+        jsScrollElementIntoView(deviceSetupDropdown);
         clickOnDeviceSetupDropdown();
         clickOnTradeInYourDevice();
 

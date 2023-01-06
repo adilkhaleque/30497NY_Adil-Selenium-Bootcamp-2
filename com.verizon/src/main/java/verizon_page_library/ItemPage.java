@@ -104,7 +104,7 @@ public class ItemPage extends SharedStepsUI {
     }
 
     public CartPage clickOnSkipButton() {
-        jsScrollUntilElementIsVisible(skipButton);
+        jsScrollElementIntoView(skipButton);
         safeClickOnElement(skipButton);
 
         return new CartPage();
@@ -176,7 +176,7 @@ public class ItemPage extends SharedStepsUI {
         clickOnFiveStarDesignButton();
         clickOnFiveStarFeaturesButton();
         clickOnFiveStarPerformanceButton();
-        jsScrollUntilElementIsVisible(reviewTitleField);
+        jsScrollElementIntoView(reviewTitleField);
         inputNickname(nickname);
         inputEmail(email);
         clickOnTermsAndConditionsCheckbox();

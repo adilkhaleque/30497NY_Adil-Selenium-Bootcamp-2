@@ -116,7 +116,7 @@ public class CreateNewCallPage extends SharedStepsUI {
         safeClickOnElement(flagDropdown);
         selectOption(flagOptions, flagIndex);
         inputText(descriptionField, description);
-        jsScrollUntilElementIsVisible(contactsField);
+        jsScrollElementIntoView(contactsField);
         inputText(contactsField, contact);
         inputText(dealField, deal);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@name='deal']//div[@role='option']")));

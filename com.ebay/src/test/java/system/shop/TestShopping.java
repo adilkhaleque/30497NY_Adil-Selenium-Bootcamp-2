@@ -1,7 +1,6 @@
 package system.shop;
 
 import base.BasePage;
-import data_providers.DataProviders;
 import ebay_page_library.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +14,7 @@ public class TestShopping extends BasePage {
         ElectronicsPage electronicsPage = homePage.clickOnElectronicsTab();
         CamerasAndPhotoPage camerasAndPhotoPage = electronicsPage.clickOnCamerasAndPhotoCategory();
         DSLRCamerasPage dslrCamerasPage = camerasAndPhotoPage.clickOnDSLRCameras();
-        jsScrollUntilElementIsVisible(dslrCamerasPage.brandDropdown);
+        jsScrollElementIntoView(dslrCamerasPage.brandDropdown);
         dslrCamerasPage.clickOnBrandDropdown();
         selectOption(dslrCamerasPage.brands, Integer.parseInt(brand));
         dslrCamerasPage.clickOnPriceDropdown();

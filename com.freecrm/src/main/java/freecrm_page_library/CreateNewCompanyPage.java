@@ -105,7 +105,7 @@ public class CreateNewCompanyPage extends SharedStepsUI {
         inputText(industryField, industry);
         inputText(numOfEmployeesField, numOfEmployees);
         inputText(annualRevenueField, annualRevenue);
-        jsScrollUntilElementIsVisible(numberField);
+        jsScrollElementIntoView(numberField);
         safeClickOnElement(priorityDropdown);
         selectOption(priorityOptions, priorityIndex);
         safeClickOnElement(statusDropdown);

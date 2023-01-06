@@ -23,7 +23,7 @@ public class TestViewProduct extends BasePage {
         switchToTab();
         switchToTab();
         switchToTab();
-        jsScrollUntilElementIsVisible(productPage.productNameText);
+        jsScrollElementIntoView(productPage.productNameText);
 
         Assert.assertEquals(productPage.getProductNameText(), expectedText);
     }

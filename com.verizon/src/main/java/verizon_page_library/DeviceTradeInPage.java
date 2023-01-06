@@ -70,7 +70,7 @@ public class DeviceTradeInPage extends SharedStepsUI {
     }
 
     public void clickOnContinueButton() {
-        jsScrollUntilElementIsVisible(continueButton);
+        jsScrollElementIntoView(continueButton);
         safeClickOnElement(continueButton);
     }
 

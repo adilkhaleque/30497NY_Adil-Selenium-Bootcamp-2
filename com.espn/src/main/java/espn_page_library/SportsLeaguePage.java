@@ -88,7 +88,7 @@ public class SportsLeaguePage extends SharedStepsUI {
     }
 
     public String getYankeesText() {
-        jsScrollUntilElementIsVisible(yankeesTitle);
+        jsScrollElementIntoView(yankeesTitle);
         return getTrimmedElementText(yankeesTitle);
     }
 
@@ -152,7 +152,7 @@ public class SportsLeaguePage extends SharedStepsUI {
 
     public AthletePage clickOnLewisHamilton() {
         clickOnDriversButton();
-        jsScrollUntilElementIsVisible(lewisHamiltonLink);
+        jsScrollElementIntoView(lewisHamiltonLink);
         safeClickOnElement(lewisHamiltonLink);
 
         return new AthletePage();

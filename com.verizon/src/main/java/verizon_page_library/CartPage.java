@@ -22,7 +22,7 @@ public class CartPage extends SharedStepsUI {
 
     public void clickOnContinue() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(continueButton));
-        jsScrollUntilElementIsVisible(continueButton);
+        jsScrollElementIntoView(continueButton);
         safeClickOnElement(continueButton);
     }
 

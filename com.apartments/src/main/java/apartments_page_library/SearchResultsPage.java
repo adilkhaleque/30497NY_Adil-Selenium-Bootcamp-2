@@ -321,7 +321,7 @@ public class SearchResultsPage extends BasePage {
         clickOnRentSortOption();
         clickOnZoomOut();
         webDriverWait.until(ExpectedConditions.elementToBeClickable(reviewProperty));
-        jsScrollUntilElementIsVisible(reviewProperty);
+        jsScrollElementIntoView(reviewProperty);
         safeClickOnElement(reviewProperty);
 
         return new PropertyPage();
@@ -330,14 +330,14 @@ public class SearchResultsPage extends BasePage {
     public void checkAddTwoFavorites() {
         clickToAddAsFavorite(favoritesButton1);
         clickToAddAsFavorite(favoritesButton2);
-        jsScrollUntilElementIsVisible(favoritesCountHeader);
+        jsScrollElementIntoView(favoritesCountHeader);
         clickOnFavoritesCountButton();
     }
 
     public void removeOneFavorite() {
         clickToAddAsFavorite(favoritesButton1);
         clickToAddAsFavorite(favoritesButton2);
-        jsScrollUntilElementIsVisible(favoritesCountHeader);
+        jsScrollElementIntoView(favoritesCountHeader);
         clickOnFavoritesCountButton();
         safeClickOnElement(favoritesButton2);
     }
@@ -357,7 +357,7 @@ public class SearchResultsPage extends BasePage {
         clickOnSelectorOptions(moveInDateSelection);
         clickOnSelectors(moreDropdown);
         clickOnSelectorOptions(anyBathsOption);
-        jsScrollUntilElementIsVisible(luxuryAffordability);
+        jsScrollElementIntoView(luxuryAffordability);
         clickOnSelectorOptions(luxuryAffordability);
         clickOnSelectorOptions(fiveStarRatings);
         clickOnDoneButton();
@@ -370,7 +370,7 @@ public class SearchResultsPage extends BasePage {
         clickOnSelectorOptions(dishwasherOption);
         clickOnSelectorOptions(parkingOption);
         clickOnSelectorOptions(poolOption);
-        jsScrollUntilElementIsVisible(garageOption);
+        jsScrollElementIntoView(garageOption);
         clickOnSelectorOptions(garageOption);
         clickOnDoneButton();
         clickOnSortButton();

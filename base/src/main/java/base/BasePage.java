@@ -31,7 +31,6 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.*;
 import java.util.List;
-import java.util.function.Function;
 
 public class BasePage {
 
@@ -278,7 +277,7 @@ public class BasePage {
         jsDriver.executeScript("arguments[0].click();", element);
     }
 
-    public void jsScrollUntilElementIsVisible(WebElement element) {
+    public void jsScrollElementIntoView(WebElement element) {
         jsDriver = (JavascriptExecutor) (driver);
         jsDriver.executeScript("arguments[0].scrollIntoView();", element);
     }

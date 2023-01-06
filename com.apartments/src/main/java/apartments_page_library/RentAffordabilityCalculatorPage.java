@@ -63,7 +63,7 @@ public class RentAffordabilityCalculatorPage extends BasePage {
     }
 
     public SearchResultsPage findAffordableRentals(String monthlyIncome, int incomePercentage, String location) {
-        jsScrollUntilElementIsVisible(calculateMyRentHeading);
+        jsScrollElementIntoView(calculateMyRentHeading);
         inputMonthlyIncome(monthlyIncome);
         setPercentageIncomeForRent(incomePercentage);
         inputLocation(location);

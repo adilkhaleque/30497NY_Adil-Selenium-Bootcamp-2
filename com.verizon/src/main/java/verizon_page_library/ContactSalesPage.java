@@ -150,7 +150,7 @@ public class ContactSalesPage extends BasePage {
         inputLastName(lName);
         inputEmail(email);
         inputPhoneNumber(number);
-        jsScrollUntilElementIsVisible(companyField);
+        jsScrollElementIntoView(companyField);
         inputCompany(company);
         selectContactMethod(contactMethod);
         inputAddress(address);

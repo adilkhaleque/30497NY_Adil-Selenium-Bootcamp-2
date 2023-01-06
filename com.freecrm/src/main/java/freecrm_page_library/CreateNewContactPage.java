@@ -140,7 +140,7 @@ public class CreateNewContactPage extends SharedStepsUI {
         inputText(zipField, zip);
         inputText(numberField, number);
         inputText(numberTypeField, numberType);
-        jsScrollUntilElementIsVisible(statusDropdown);
+        jsScrollElementIntoView(statusDropdown);
         inputText(positionField, position);
         inputText(departmentField, department);
         safeClickOnElement(sourceDropdown);

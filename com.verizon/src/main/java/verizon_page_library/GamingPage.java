@@ -15,7 +15,7 @@ public class GamingPage extends SharedStepsUI {
     }
 
     public SearchResultsPage clickOnGamingHeadsets() {
-        jsScrollUntilElementIsVisible(gamingHeadsetsLink);
+        jsScrollElementIntoView(gamingHeadsetsLink);
         safeClickOnElement(gamingHeadsetsLink);
 
         return new SearchResultsPage();

@@ -61,7 +61,7 @@ public class PropertyPage extends BasePage {
     }
 
     public void getReviewModal() {
-        jsScrollUntilElementIsVisible(reviewLink);
+        jsScrollElementIntoView(reviewLink);
         clickOnReviewLink();
         clickOnWriteAReviewButton();
     }

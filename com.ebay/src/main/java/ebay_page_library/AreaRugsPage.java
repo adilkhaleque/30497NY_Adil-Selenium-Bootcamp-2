@@ -15,7 +15,7 @@ public class AreaRugsPage extends SharedStepsUI {
     }
 
     public TraditionalAreaRugs clickOnTraditionalStyle() {
-        jsScrollUntilElementIsVisible(traditionalStyle);
+        jsScrollElementIntoView(traditionalStyle);
         safeClickOnElement(traditionalStyle);
 
         return new TraditionalAreaRugs();

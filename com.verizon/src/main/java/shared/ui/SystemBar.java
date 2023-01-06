@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import verizon_page_library.*;
 
-import java.util.List;
-
 public class SystemBar extends BasePage {
 
     @FindBy(id = "gnav20-Shop-L1")
@@ -167,7 +165,7 @@ public class SystemBar extends BasePage {
     public SearchResultsPage navigateToJetpacksAndHotspots() {
         clickOnShopButton();
         clickOnDevicesButton();
-        jsScrollUntilElementIsVisible(jetpacksAndHotspots);
+        jsScrollElementIntoView(jetpacksAndHotspots);
         clickOnJetpacksAndHotspots();
 
         return new SearchResultsPage();
